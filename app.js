@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const landingPage = require('./routes/landingPage');
+const authRoutes = require('./routes/authRoutes');
 
 // Make everything inside of public/ available
 app.use(express.static('public'));
@@ -17,14 +18,7 @@ app.set('view engine', 'hbs');
 
 //makes a req when the user go to the route /
 app.use('/', landingPage);
-
-app.get('/signup', (req, res, next) => {
-  res.render('public/signup');
-});
-
-app.get('/login', (req, res, next) => {
-  res.render('public/login');
-});
+app.use('/', authRoutes);
 
 app.listen(3000, () => {
   console.log('My first app listening on port 3000!')
