@@ -1,2 +1,18 @@
-<h1>Sign up page</h1>
+<div >
+    <h1>Sign up</h1>
 
+    <form action="/signup" method="POST">
+        <input type="text" name="name" placeholder="Name">
+        <br>
+        <input type="text" name="email" placeholder="Email">
+        <br>
+        <input type="password" name="password" placeholder="Password">
+        <br>
+
+        {{!-- {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}} --}}
+        
+        <button class="crazy-button" type="submit">Sign up Now!</button>
+    </form>
+</div>
