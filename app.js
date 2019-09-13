@@ -1,9 +1,20 @@
+require('dotenv').config();
+
 const express = require('express');
 const hbs = require('hbs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
+
+mongoose.connect('mongodb://localhost/maisDinheiro', { useNewUrlParser: true })
+  .then((x) => {
+    console.log(`Connected to Mongo! Database name: ${x.connections[0].name}`);
+  })
+  .catch((err) => {
+    console.log(`Error connecting to Mongo: ${err}`);
+  });
 
 const landingPage = require('./routes/landingPage');
 const authRoutes = require('./routes/authRoutes');
