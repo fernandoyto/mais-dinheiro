@@ -2,12 +2,13 @@ const express = require('express');
 
 const router = express.Router();
 
-// User model
-const User = require("../models/Users");
-
 // BCrypt to encrypt passwords
-const bcrypt         = require("bcrypt");
+const bcrypt         = require('bcrypt');
+
 const saltRounds     = 10;
+
+// User model
+const User = require('../models/Users');
 
 // Signup
 
@@ -16,11 +17,9 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', async (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
+  const { firstName, lastName, email, password } = req.body;
 
-  if (name === '' || email === '' || password === '') {
+  if (firstName === '' || lastName === '' || email === '' || password === '') {
     res.render('public/signup', { errorMessage: 'Please fill all required fields!' });
     return;
   }
@@ -33,7 +32,7 @@ router.post('/signup', async (req, res) => {
 
   const salt = bcrypt.genSaltSync(saltRounds);
   const hash = bcrypt.hashSync(password, salt);
-  const newUser = new User({ name, email, password: hash });
+  const newUser = new User({ firstName, lastName, email, password: hash });
 
   try {
     await newUser.save();
