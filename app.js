@@ -22,6 +22,8 @@ const authRoutes = require('./routes/authRoutes');
 // Make everything inside of public/ available
 app.use(express.static('public'));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // creates an absolute path pointing to a folder called "views"
 app.set('views', __dirname + '/views');
 // tell our Express app that HBS will be in charge of rendering the HTML:
@@ -40,7 +42,6 @@ app.listen(3000, () => {
 // app.set('view engine', 'hbs');
 // app.set('views', `${__dirname}/views`);
 // app.use(express.static(path.join(__dirname, 'public')));
-// app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // hbs.registerPartials(`${__dirname}/views/partials`);
