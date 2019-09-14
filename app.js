@@ -11,7 +11,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/maisDinheiro', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/maisDinheiro', { useNewUrlParser: true, useUnifiedTopology: true })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: ${x.connections[0].name}`);
   })
@@ -24,6 +24,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
+  resave: false,
+  saveUninitialized: true,
   secret: 'basic-auth-secret',
   cookie: { maxAge: 60000000 },
   store: new MongoStore({
@@ -50,21 +52,23 @@ const landingPage = require('./routes/public/landingPage');
 
 const authRoutes = require('./routes/public/authRoutes');
 
+const privateRoutes = require('./routes/private/privateRoutes');
+
 app.use('/', landingPage);
 app.use('/', authRoutes);
 
-app.listen(3000, () => {
-  console.log('My first app listening on port 3000!')
+app.use((req, res, next) => {
+  if (req.session.currentUser) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
 });
 
-// const beers = require('./routes/beers.routes');
+app.use('/', privateRoutes);
 
-// app.set('view engine', 'hbs');
-// app.set('views', `${__dirname}/views`);
-// app.use(express.static(path.join(__dirname, 'public')));
+app.listen(3000, () => {
+  console.log('My first app listening on port 3000!');
+});
 
-
-// hbs.registerPartials(`${__dirname}/views/partials`);
-
-// app.use('/', beers);
-
+module.exports = app;
