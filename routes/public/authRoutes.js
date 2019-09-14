@@ -8,10 +8,9 @@ const bcrypt         = require('bcrypt');
 const saltRounds     = 10;
 
 // User model
-const User = require('../models/Users');
+const User = require('../../models/Users');
 
 // Signup
-
 router.get('/signup', (req, res, next) => {
   res.render('public/signup');
 });
@@ -46,6 +45,30 @@ router.post('/signup', async (req, res) => {
 //Login
 router.get('/login', (req, res, next) => {
   res.render('public/login');
+});
+
+router.post('/login', async (req, res, next) => {
+  const { email, password } = req.body;
+  if (email === '' || password === '') {
+    res.render('public/login', {
+      errorMessage: 'Please enter both, username and password to sign up.',
+    });
+    return;
+  }
+
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.render('public/login', { errorMessage: "The username doesn't exist." });
+    return;
+  }
+
+  if (bcrypt.compareSync(password, user.password)) {
+    req.session.currentUser = user;
+    res.redirect('/');
+  } else {
+    res.render('public/login', { errorMessage: 'Incorrect password' });
+  }
 });
 
 module.exports = router;
