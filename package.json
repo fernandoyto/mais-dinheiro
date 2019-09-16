@@ -1,7 +1,7 @@
 {
   "name": "mais-dinheiro",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project 2 from Ironhack",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
