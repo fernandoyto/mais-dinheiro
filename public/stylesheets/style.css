@@ -4,3 +4,47 @@
 
 .bg-grey{ background-color: #8c887e; }
 .bg-yellow{ background-color: #ffaa00; }
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+header {
+    background-color: #8c887e;
+    width: 100%;
+    height: 60px;
+}
+
+header li a{
+    color: #ffaa00;
+    text-decoration: none;
+}
+
+header li a:hover {
+    font-size: 25px;
+}
+
+
+ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+    justify-content: flex-end; 
+    margin: 0px;
+}
+
+li {
+    margin: 20px;
+}
+
+#title {
+    margin-right: auto;
+}
+
+.container {
+    margin: 0px 40px
+}
