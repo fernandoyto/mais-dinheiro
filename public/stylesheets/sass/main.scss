@@ -1,0 +1,51 @@
+/*---------- COLORS ----------*/
+$primary-color-0: #ffaa00;
+$second-color-0: #8c887e;
+
+/*---------- BACKGROUND ----------*/
+.bg-grey{ background-color: $second-color-0; }
+.bg-yellow{ background-color: $primary-color-0; }
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+header {
+    background-color: $second-color-0;
+    width: 100%;
+    height: 60px;
+}
+
+header li a{
+    color: $primary-color-0;
+    text-decoration: none;
+}
+
+header li a:hover {
+    font-size: 25px;
+}
+
+
+ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+    justify-content: flex-end; 
+    margin: 0px;
+}
+
+li {
+    margin: 20px;
+}
+
+#title {
+    margin-right: auto;
+}
+
+.container {
+    margin: 0px 40px
+}
