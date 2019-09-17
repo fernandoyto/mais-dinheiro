@@ -1,0 +1,126 @@
+/*------------ COLORS ------------*/
+$primary-color-0: #ffaa00;
+$second-color-0: #8c887e;
+$muted-color: mix(white, $primary-color-0, 70%);
+$width: 320px;
+/*---------- BACKGROUND ----------*/
+.bg-grey{ background-color: $second-color-0; }
+.bg-yellow{ background-color: $primary-color-0; }
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+
+body {
+    margin: 0px;
+    // background-color: #141414
+
+}
+
+header {
+    background-color: $second-color-0;
+    width: 100%;
+    height: 60px;
+}
+
+header li a{
+    color: $primary-color-0;
+    text-decoration: none;
+}
+
+header li a:hover {
+    font-size: 25px;
+}
+
+
+ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+    justify-content: flex-end; 
+    margin: 0px;
+}
+
+li {
+    margin: 20px;
+}
+
+#title {
+    margin-right: auto;
+}
+
+.container {
+    margin: 0px 40px
+}
+
+.group {
+    position: relative;
+    margin: 45px 0;
+}
+
+
+/*---------- INPUTS ----------*/
+input,
+textarea {
+  background: none;
+  color: $primary-color-0;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: $width;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid $muted-color;
+  &:focus {
+    outline: none;
+  }
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -14px;
+    font-size: 12px;
+    color: $primary-color-0;
+  }
+  &:focus ~ .bar:before {
+    width: $width;
+  }
+}
+
+input[type="password"] {
+  letter-spacing: 0.3em;
+}
+
+label {
+  color: $primary-color-0;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 300ms ease all;
+}
+
+// .bar {
+//   position: relative;
+//   display: block;
+//   width: $width;
+//   &:before {
+//     content: '';
+//     height: 2px;
+//     width: 0;
+//     bottom: 0px;
+//     position: absolute;
+//     background: $primary-color-0;
+//     transition: 300ms ease all;
+//     left: 0%;
+//   }
+// }
+
+/*---------- BUTTON ----------*/
