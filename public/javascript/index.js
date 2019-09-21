@@ -7,6 +7,6 @@ window.onload = () => {
     const value = document.getElementById('newIncValue').value;
     const date = document.getElementById('newIncDate').value;
     const category = document.getElementById('newIncCategory').value;
-    await axios.post('/home/incomes/new', { description, value, date, category });
+    await axios.post('/api/incomes/create', { description, value, date, category });
   };
 };

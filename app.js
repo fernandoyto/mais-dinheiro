@@ -54,8 +54,11 @@ const authRoutes = require('./routes/public/authRoutes');
 
 const privateRoutes = require('./routes/private/privateRoutes');
 
+const apiRoutes = require('./routes/public/apiRoutes');
+
 app.use('/', landingPage);
 app.use('/', authRoutes);
+app.use('/', apiRoutes);
 
 app.use((req, res, next) => {
   if (req.session.currentUser) {
