@@ -26,7 +26,7 @@
 
 <div>
     <h2>
-        Incomes
+        Create new Income
     </h2>
     <form id="income-form">
         <input id="newIncDescription" type="string" name="Description" placeholder="Description">
@@ -43,6 +43,17 @@
 
         <button id="new-income-btn">Add Income</button>
     </form>
+</div>
+
+<div>
+    <h2>Recent incomes</h2>
+    <ul id="recent-incomes">
+        {{#each recentIncomes}}
+            <li>
+                Description: {{description}} --- Value: {{value}} --- Date: {{date}} --- Category: {{category}}
+            </li>        
+        {{/each}}
+    </ul>
 </div>
 
 <script src="/javascript/index.js"></script>
