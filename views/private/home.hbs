@@ -26,21 +26,34 @@
 
 <div>
     <h2>
-        Incomes
+        Create new Income
     </h2>
-    <form action="" method="post">   {{!-- insert action --}}
-        <input type="string" name="Description" placeholder="Description">
-        <input type="string" name="Value" placeholder="Value">
-        <input type="date" name="Date" placeholder="Date">
+    <form id="income-form">
+        <input id="newIncDescription" type="string" name="Description" placeholder="Description">
+        <input id="newIncValue" type="number" name="Value" placeholder="Value">
+        <input id="newIncDate" type="date" name="Date" placeholder="Date">
         <br>
         <label for="category">Category</label>
-        <select name="category" id="category">
+        <select name="category" id="newIncCategory">
             <option value="{{category}}">{{category}}</option>
             <option value="Salary">Salary</option>
             <option value="Freelancer">Freelancer</option>
             <option value="Carry Over">Carry Over</option>
         </select>
 
-        <button type="submit">Add Income</button>
+        <button id="new-income-btn">Add Income</button>
     </form>
 </div>
+
+<div>
+    <h2>Recent incomes</h2>
+    <ul id="recent-incomes">
+        {{#each recentIncomes}}
+            <li>
+                Description: {{description}} --- Value: {{value}} --- Date: {{date}} --- Category: {{category}}
+            </li>        
+        {{/each}}
+    </ul>
+</div>
+
+<script src="/javascript/index.js"></script>
