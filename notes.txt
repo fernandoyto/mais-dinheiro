@@ -3,5 +3,5 @@
 - no cmd: $node app.js
 
 * Rodar o gulp para "watch" o sass (rodar o programa dentro da pasta):
-sass --watch main.scss main.css
-
+// sass --watch main.scss main.css
+gulp
