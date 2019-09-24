@@ -17,6 +17,23 @@ async function getRecentIncomes() {
   }
 }
 
+async function getRecentExpenses() {
+  try {
+    const recentExpenses = await axios.get('/api/recent-expenses');
+    const recentExpensesDiv = document.getElementById('recent-expenses');
+    recentExpensesDiv.innerHTML = '';
+    document.getElementById('recent-expenses').innerHTML = '';
+    recentExpenses.data.forEach((income) => {
+      recentExpensesDiv.innerHTML += `
+      <li>
+        Description: ${expense.description} --- Value: ${expense.value} --- Date: ${expense.date} --- Category: ${expense.category}
+      </li>`;
+    });
+  } catch (error) {
+    alert(error);
+  }
+}
+
 window.onload = () => {
   document.getElementById('income-form').onsubmit = async (event) => {
     event.preventDefault();
@@ -26,6 +43,20 @@ window.onload = () => {
     const category = document.getElementById('newIncCategory').value;
     try {
       await axios.post('/api/incomes/create', { description, value, date, category });
+      await getRecentIncomes();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  document.getElementById('expense-form').onsubmit = async (event) => {
+    event.preventDefault();
+    const description = document.getElementById('newExpDescription').value;
+    const value = document.getElementById('newExpValue').value;
+    const date = document.getElementById('newExpDate').value;
+    const category = document.getElementById('newExpCategory').value;
+    try {
+      await axios.post('/api/exprenses/create', { description, value, date, category });
       await getRecentIncomes();
     } catch (error) {
       alert(error);
