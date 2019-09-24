@@ -56,7 +56,7 @@ window.onload = () => {
     const date = document.getElementById('newExpDate').value;
     const category = document.getElementById('newExpCategory').value;
     try {
-      await axios.post('/api/incomes/create', { description, value, date, category });
+      await axios.post('/api/exprenses/create', { description, value, date, category });
       await getRecentIncomes();
     } catch (error) {
       alert(error);
