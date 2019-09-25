@@ -4,9 +4,11 @@ const { Schema } = mongoose;
 
 const expenseSchema = new Schema({
   description: { type: String },
-  value: { type: String, required: true },
+  value: { type: Number, required: true },
   date: { type: Date, required: true },
   category: { type: String, enum: ['Food', 'Supermarket', 'Transportation', 'Entertainment'] },
+  userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  creationDate: { type: Date},
   // recurrence: { type: String, required: true},
   // picture: { type: String },
 });

@@ -44,7 +44,7 @@
     "nodemon": "^1.19.2"
   },
   "scripts": {
-    "watch": "gulp watch",
+    "watch": "gulp",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -23,7 +23,7 @@ async function getRecentExpenses() {
     const recentExpensesDiv = document.getElementById('recent-expenses');
     recentExpensesDiv.innerHTML = '';
     document.getElementById('recent-expenses').innerHTML = '';
-    recentExpenses.data.forEach((income) => {
+    recentExpenses.data.forEach((expense) => {
       recentExpensesDiv.innerHTML += `
       <li>
         Description: ${expense.description} --- Value: ${expense.value} --- Date: ${expense.date} --- Category: ${expense.category}
@@ -56,8 +56,8 @@ window.onload = () => {
     const date = document.getElementById('newExpDate').value;
     const category = document.getElementById('newExpCategory').value;
     try {
-      await axios.post('/api/exprenses/create', { description, value, date, category });
-      await getRecentIncomes();
+      await axios.post('/api/expenses/create', { description, value, date, category });
+      await getRecentExpenses();
     } catch (error) {
       alert(error);
     }
