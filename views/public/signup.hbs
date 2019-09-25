@@ -3,31 +3,31 @@
 
     <form action="/signup" method="POST">
         <div class="group">
-            <input type="text" name="firstName" required>        
+            <input type="text" name="firstName" placeholder="placeholder" required>        
+            <label>First Name</label>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>First Name</label>
         </div>
 
         <div class="group">
-            <input type="text" name="lastName" required>
+            <input type="text" name="lastName" placeholder="placeholder" required>
+            <label>Last Name</label>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Last Name</label>
         </div>
         
         <div class="group">
-            <input type="email" name="email" required>
+            <input type="email" name="email" placeholder="placeholder" required>
+            <label>Email</label>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Email</label>
         </div>
 
         <div class="group">
-            <input type="password" name="password" required>
+            <input type="password" name="password" placeholder="placeholder" required>
+            <label>Password</label>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Password</label>
         </div>
 
         {{#if errorMessage}}
