@@ -8,6 +8,7 @@ const incomeSchema = new Schema({
   date: { type: Date, required: true },
   category: { type: String, enum: ['Salary', 'Freelancer', 'Carry Over'], required: true },
   userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  creationDate: { type: Date},
   // recurrence: { type: String, required: true},
   // picture: { type: String },
 });
