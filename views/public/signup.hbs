@@ -2,21 +2,33 @@
     <h1>Sign up</h1>
 
     <form action="/signup" method="POST">
-        <label for="firstName">First Name</label>
-        <br>
-        <input type="text" name="firstName" placeholder="First Name">
-        <br>
-        <label for="lastName">Last Name</label>
-        <br>
-        <input type="text" name="lastName" placeholder="Last Name">
-        <br>
-        <label for="email">E-mail</label>
-        <br>
-        <input type="text" name="email" placeholder="Email">
-        <br>
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="Password">
-        <br>
+        <div class="group">
+            <input type="text" name="firstName" required>        
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>First Name</label>
+        </div>
+
+        <div class="group">
+            <input type="text" name="lastName" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Last Name</label>
+        </div>
+        
+        <div class="group">
+            <input type="email" name="email" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+        </div>
+
+        <div class="group">
+            <input type="password" name="password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Password</label>
+        </div>
 
         {{#if errorMessage}}
             <p>{{errorMessage}}</p>

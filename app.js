@@ -11,7 +11,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/maisDinheiro', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: ${x.connections[0].name}`);
   })
@@ -54,8 +54,11 @@ const authRoutes = require('./routes/public/authRoutes');
 
 const privateRoutes = require('./routes/private/privateRoutes');
 
+const apiRoutes = require('./routes/public/apiRoutes');
+
 app.use('/', landingPage);
 app.use('/', authRoutes);
+app.use('/', apiRoutes);
 
 app.use((req, res, next) => {
   if (req.session.currentUser) {
@@ -67,8 +70,8 @@ app.use((req, res, next) => {
 
 app.use('/', privateRoutes);
 
-app.listen(3000, () => {
-  console.log('My first app listening on port 3000!');
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT} || ${process.env.ENV}`);
 });
 
 module.exports = app;

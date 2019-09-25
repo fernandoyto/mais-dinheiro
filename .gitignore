@@ -1,2 +1,12 @@
+# dependency directories:
 node_modules
+package-lock.json
+
+# dotenv environment variables file:
 .env
+
+# any directory depth with scss extension
+**/.scss
+
+# any directory depth with scss extension
+**/.css.map
