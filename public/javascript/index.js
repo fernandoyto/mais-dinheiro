@@ -1,17 +1,22 @@
 // const api = new APIHandler('http://localhost:3000');
+// const moment = require('moment');
 
 async function getRecentIncomes() {
   try {
     const recentIncomes = await axios.get('/api/recent-incomes');
-    const recentIncomesDiv = document.getElementById('recent-incomes');
-    recentIncomesDiv.innerHTML = '';
-    document.getElementById('recent-incomes').innerHTML = '';
+    const recentIncomesTableBody = document.getElementById('recent-incomes-table-body');
+    recentIncomesTableBody.innerHTML = '';
+    let updatedRecentIncomes = '';
     recentIncomes.data.forEach((income) => {
-      recentIncomesDiv.innerHTML += `
-      <li>
-        Description: ${income.description} --- Value: ${income.value} --- Date: ${income.date} --- Category: ${income.category}
-      </li>`;
+      // const incomeDate = moment('DD MMM YYYY');
+      updatedRecentIncomes += `
+      <tr>
+        <td>${income.category}<td>
+        <td>${income.date}</td>
+        <td>${income.value}</td>
+      </tr>`;
     });
+    recentIncomesTableBody.innerHTML = updatedRecentIncomes;
   } catch (error) {
     alert(error);
   }
