@@ -14,8 +14,7 @@ router.get('/logout', (req, res, next) => {
 router.get('/home', async (req, res) => {
   const recentIncomes = await Income.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
   const recentExpenses = await Expense.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
-  res.render('private/home', {  recentExpenses });
-  // res.render('private/home', { recentIncomes, recentExpenses });
+  res.render('private/home', { recentIncomes, recentExpenses });
 
 });
 
