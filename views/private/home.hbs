@@ -13,9 +13,8 @@
                 <input id="newIncValue" type="number" name="Value" placeholder="Value">
                 <input id="newIncDate" type="date" name="Date" placeholder="Date">
                 <br>
-                <label for="category">Category</label>
+                <label for="category"></label>
                 <select name="category" id="newIncCategory">
-                    <option value="{{category}}">{{category}}</option>
                     <option value="Salary">Salary</option>
                     <option value="Freelancer">Freelancer</option>
                     <option value="Carry Over">Carry Over</option>
@@ -46,7 +45,9 @@
         </div>
     </div>
     <div class="balance-container">
-        
+        <a href="/api/all-incomes">
+            AAAAAAAA
+        </a>
     </div>
     <div class="expenses-container">
         <div class="expenses-form">
@@ -58,7 +59,7 @@
                 <input id="newExpValue" type="number" name="Value" placeholder="Value">
                 <input id="newExpDate" type="date" name="Date" placeholder="Date">
                 <br>
-                <label for="category">Category</label>
+                <label for="category"></label>
                 <select name="category" id="newExpCategory">
                     <option value="{{category}}">{{category}}</option>
                     <option value="Food">Food</option>
@@ -69,7 +70,7 @@
                 <button id="new-expense-btn">Add Expense</button>
             </form>
         </div>
-        <div class="incomes-recent">
+        <div class="expenses-recent">
             <h2>Recent Expenses</h2>
             <ul id="recent-expenses">
                 {{#each recentExpenses}}
