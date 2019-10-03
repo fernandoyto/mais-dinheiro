@@ -56,7 +56,6 @@ router.get('/api/all-incomes', async (req, res) => {
   //   { $match: { userId: currentId } },
   //   { $group: { _id: null, sum: { $sum: '$value' } } }
   // ]);
-  // console.log(allIncomes);
   const allExpenses = await Expense.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
   let sumExpenses = 0;
   if (allExpenses.length === 1) {
