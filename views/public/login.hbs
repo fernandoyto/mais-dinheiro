@@ -4,22 +4,20 @@
   <form action="/login" method="post">
     {{!-- <input type="text" name="email" placeholder="Email" required> --}}
     <div class="group">
-      <input type="text" name="email" placeholder="placeholder" required>
+      <input class="effect"  type="text" name="email" placeholder="placeholder" required>
       <label>Email</label>
-      <span class="highlight"></span>
-      <span class="bar"></span>
+      <span class="line"></span>
     </div>
 
     <div class="group">
-      <input type="password" name="password" placeholder="placeholder" required>
+      <input class="effect" type="password" name="password" placeholder="placeholder" required>
       <label>Password</label>
-      <span class="highlight"></span>
-      <span class="bar"></span>
+      <span class="line"></span>
     </div>
 
 
     {{#if errorMessage}}
-      <p>{{errorMessage}}</p>
+    <p>{{errorMessage}}</p>
     {{/if}}
     <button type="submit">Login</button>
   </form>

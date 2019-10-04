@@ -25,7 +25,7 @@ async function getRecentIncomes() {
 async function getRecentExpenses() {
   try {
     const recentExpenses = await axios.get('/api/recent-expenses');
-    const recentExpensesDiv = document.getElementById('recent-expenses');
+    const recentExpensesDiv = document.getElementById('recent-expenses-table-body');
     recentExpensesDiv.innerHTML = '';
     document.getElementById('recent-expenses').innerHTML = '';
     recentExpenses.data.forEach((expense) => {
