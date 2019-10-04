@@ -44,11 +44,17 @@
             </table>
         </div>
     </div>
+
     <div class="balance-container">
-        <a href="/api/all-incomes">
-            AAAAAAAA
-        </a>
+        <div id="all-incomes">
+                {{#each balance}}
+                    <div>
+                        Total Income: {{sumIncomes}} -- Total Expense: {{sumExpenses}} -- Total Balance: {{balance}}
+                    </div>
+                {{/each}}
+        </div>
     </div>
+
     <div class="expenses-container">
         <div class="expenses-form">
             <h2>
