@@ -1,20 +1,21 @@
 <div class="container">
-    <div class="row">
+    <div class="row ">
 
-        <div class="incomes-container col-4 p-0">
-            <div class="incomes-form">
+ {{!----------------------------------------------- INCOMES -----------------------------------------------}}
+        <div class="incomes-container col-4 p-0 ">
+            <div class="incomes-form ">
                 <h2>
                     Create new Income
                 </h2>
                 <form action="/api/incomes/create" method="POST" id="income-form">
-                    <div class="group">
+                    <div class="group d-flex justify-content-center">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
                     </div>
 
                     <div class="group">
-                        <input id="newIncValue" type="number" name="value" placeholder="placeholder">
+                        <input id="newIncValue" step="0.01" type="number" name="value" placeholder="placeholder">
                         <label class="label-upside">Value</label>
                         <span class="line"></span>
                     </div>
@@ -63,6 +64,7 @@
             </div>
         </div>
 
+ {{!----------------------------------------------- BALANCE -----------------------------------------------}}
         <div class="balance-container col-4 p-0">
             <div id="total-balance">
                 Total Income: {{totalIncome}}
@@ -71,6 +73,7 @@
             </div>
         </div>
 
+ {{!----------------------------------------------- EXPENSE -----------------------------------------------}}
         <div class="expenses-container col-4 p-0">
             <div class="expenses-form">
                 <h2>
@@ -84,7 +87,7 @@
                     </div>
 
                     <div class="group">
-                        <input id="newExpValue" type="number" name="value" placeholder="Value">
+                        <input id="newExpValue" type="number"  step="0.01" name="value" placeholder="Value">
                         <label class="label-upside">Value</label>
                         <span class="line"></span>
                     </div>

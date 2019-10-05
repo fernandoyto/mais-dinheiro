@@ -1,6 +1,6 @@
-<h1>Login Page</h1>
-
-<div>
+<h1>Login</h1>
+<div class="d-flex justify-content-center">
+  <div>
   <form action="/login" method="post">
     {{!-- <input type="text" name="email" placeholder="Email" required> --}}
     <div class="group">
@@ -21,4 +21,9 @@
     {{/if}}
     <button type="submit">Login</button>
   </form>
+
+  <div>
+    Don't have an account? <br>
+    Go to your <a href="/signup">Sign up Page!</a> 
+  </div>
 </div>
