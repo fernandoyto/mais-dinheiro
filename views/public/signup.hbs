@@ -1,39 +1,42 @@
-<div>
-    <h1>Sign up</h1>
+<h1>Sign Up</h1>
 
-    <form action="/signup" method="POST">
-        <div class="group">
-            <input type="text" name="firstName" required>        
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>First Name</label>
+<div class="d-flex justify-content-center">
+    <div>
+        <form action="/signup" method="POST">
+            <div class="group">
+                <input class="effect" type="text" name="firstName" placeholder="placeholder" required>        
+                <label>First Name</label>
+                <span class="line"></span>
+            </div>
+
+            <div class="group">
+                <input class="effect"  type="text" name="lastName" placeholder="placeholder" required>
+                <label>Last Name</label>
+                <span class="line"></span>
+            </div>
+            
+            <div class="group">
+                <input class="effect" type="email" name="email" placeholder="placeholder" required>
+                <label>Email</label>
+                <span class="line"></span>
+            </div>
+
+            <div class="group">
+                <input class="effect" type="password" name="password" placeholder="placeholder" required>
+                <label>Password</label>
+                <span class="line"></span>
+            </div>
+
+            {{#if errorMessage}}
+                <p>{{errorMessage}}</p>
+            {{/if}}
+
+            <button class="crazy-button" type="submit">Sign up Now!</button>
+        </form>
+
+        <div>
+            Already have an account? <br>
+            Go to your <a href="/login">Login Page!</a> 
         </div>
-
-        <div class="group">
-            <input type="text" name="lastName" required>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Last Name</label>
-        </div>
-        
-        <div class="group">
-            <input type="email" name="email" required>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Email</label>
-        </div>
-
-        <div class="group">
-            <input type="password" name="password" required>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Password</label>
-        </div>
-
-        {{#if errorMessage}}
-            <p>{{errorMessage}}</p>
-        {{/if}}
-
-        <button class="crazy-button" type="submit">Sign up Now!</button>
-    </form>
+    </div>
 </div>

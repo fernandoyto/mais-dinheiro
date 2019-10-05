@@ -1,69 +1,143 @@
-<h1>This is Home.hbs - A private route</h1>
+<div class="container">
+    <div class="row ">
 
-<a href="/logout">Logout</a>
+ {{!----------------------------------------------- INCOMES -----------------------------------------------}}
+        <div class="incomes-container col-4 p-0 ">
+            <div class="incomes-form ">
+                <h2>
+                    Create new Income
+                </h2>
+                <form action="/api/incomes/create" method="POST" id="income-form">
+                    <div class="group d-flex justify-content-center">
+                        <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
+                        <label class="label-upside">Description</label>
+                        <span class="line"></span>
+                    </div>
 
-<div>
-    <h2>
-        Create new Income
-    </h2>
-    <form id="income-form">
-        <input id="newIncDescription" type="string" name="Description" placeholder="Description">
-        <input id="newIncValue" type="number" name="Value" placeholder="Value">
-        <input id="newIncDate" type="date" name="Date" placeholder="Date">
-        <br>
-        <label for="category">Category</label>
-        <select name="category" id="newIncCategory">
-            <option value="{{category}}">{{category}}</option>
-            <option value="Salary">Salary</option>
-            <option value="Freelancer">Freelancer</option>
-            <option value="Carry Over">Carry Over</option>
-        </select>
+                    <div class="group">
+                        <input id="newIncValue" step="0.01" type="number" name="value" placeholder="placeholder">
+                        <label class="label-upside">Value</label>
+                        <span class="line"></span>
+                    </div>
 
-        <button id="new-income-btn">Add Income</button>
-    </form>
-</div>
+                    <div class="group">
+                        <input id="newIncDate" type="date" name="date" placeholder="placeholder">
+                        <label class="label-upside">Date</label>
+                        <span class="line"></span>
+                    </div>
 
-<div>
-    <h2>
-        Create new Expense
-    </h2>
-    <form id="expense-form">
-        <input id="newExpDescription" type="string" name="Description" placeholder="Description">
-        <input id="newExpValue" type="number" name="Value" placeholder="Value">
-        <input id="newExpDate" type="date" name="Date" placeholder="Date">
-        <br>
-        <label for="category">Category</label>
-        <select name="category" id="newExpCategory">
-            <option value="{{category}}">{{category}}</option>
-            <option value="Food">Food</option>
-            <option value="Supermarket">Supermarket</option>
-            <option value="Transportation">Transportation</option>
-            <option value="Entertainment">Entertainment</option>
-        </select>
-        <button id="new-expense-btn">Add Expense</button>
-    </form>
-</div>
+                    <div class="group">
+                        <label class="label-upside" for="category">Category</label>
+                        <select name="category" id="newIncCategory">
+                            <option value="{{category}}">{{category}}</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Carry Over">Carry Over</option>
+                        </select>
+                        </div>
+                    <button type="submit" id="new-income-btn">Add Income</button>
+                    
+                </form>
+            </div>
+            <div>
+                <h2>Recent Incomes</h2>
+                <table id="recent-incomes-table">
+                    <thead class="container">
+                        <div class="row">
+                            <tr class="col-12">
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Value</th>
+                            </tr>
+                        </div>
+                    </thead>
+                    <tbody id="recent-incomes-table-body">
+                        {{#each recentIncomes}}
+                            <tr>
+                                <td class="txt-center">{{category}}</td>
+                                <td>{{formattedDate}}</td>
+                                <td>{{value}}</td>            
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-<div>
-    <h2>Recent Incomes</h2>
-    <ul id="recent-incomes">
-        {{#each recentIncomes}}
-            <li>
-                Description: {{description}} --- Value: {{value}} --- Date: {{date}} --- Category: {{category}}
-            </li>        
-        {{/each}}
-    </ul>
-</div>
+ {{!----------------------------------------------- BALANCE -----------------------------------------------}}
+        <div class="balance-container col-4 p-0">
+            <div id="total-balance">
+                Total Income: {{totalIncome}}
+                Total Expense: {{totalExpense}}
+                Balance: {{balance}}
+            </div>
+        </div>
 
-<div>
-    <h2>Recent Expenses</h2>
-    <ul id="recent-expenses">
-        {{#each recentExpenses}}
-            <li>
-                Description: {{description}} --- Value: {{value}} --- Date: {{date}} --- Category: {{category}}
-            </li>        
-        {{/each}}
-    </ul>
+ {{!----------------------------------------------- EXPENSE -----------------------------------------------}}
+        <div class="expenses-container col-4 p-0">
+            <div class="expenses-form">
+                <h2>
+                    Create new Expense
+                </h2>
+                <form action="/api/expenses/create" method="POST" id="expense-form">
+                    <div class="group">
+                        <input id="newExpDescription" type="string" name="description" placeholder="Description">
+                        <label class="label-upside">Description</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <input id="newExpValue" type="number"  step="0.01" name="value" placeholder="Value">
+                        <label class="label-upside">Value</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <input id="newExpDate" type="date" name="date" placeholder="Date">
+                        <label class="label-upside second-color">Date</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <label class="label-upside" for="category">Category</label>
+                        <select name="category" id="newIncCategory">
+                            <option value="{{category}}">{{category}}</option>
+                            <option value="Food">Food</option>
+                            <option value="Supermarket">Supermarket</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="new-expense-btn">Add Expense</button>
+                </form>
+            </div>
+            <div>
+                <h2>Recent Expenses</h2>
+                <table id="recent-expenses-table">
+                    <thead class="container">
+                        <div class="row">
+                        <tr class="col-12">
+                            <div class="">
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Value</th>
+                            </div>
+                        </tr>
+                        </div>
+                    </thead>
+                    <tbody id="recent-expenses-table-body">
+                        {{#each recentExpenses}}
+                            <tr>
+                                <td class="txt-center">{{category}}</td>
+                                <td>{{date}}</td>
+                                <td>{{value}}</td>            
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script src="/javascript/index.js"></script>
