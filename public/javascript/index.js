@@ -86,5 +86,4 @@ window.onload = () => {
       alert(error);
     }
   };
-
 };
