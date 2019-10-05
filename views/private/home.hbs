@@ -62,13 +62,10 @@
         </div>
 
         <div class="balance-container col-4 p-0">
-            <a href="/api/total-balance">OIA EU AQUIIIIIIIIIIII</a>
             <div id="total-balance">
-                    {{#each balance}}
-                        <div>
-                            Total Income: {{sumIncomes}} -- Total Expense: {{sumExpenses}} -- Total Balance: {{balance}}
-                        </div>
-                    {{/each}}
+                Total Income: {{totalIncome}}
+                Total Expense: {{totalExpense}}
+                Balance: {{balance}}
             </div>
         </div>
 
