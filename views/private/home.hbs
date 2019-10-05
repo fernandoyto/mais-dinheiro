@@ -63,9 +63,16 @@
             </div>
         </div>
 
-        {{!-- <div class="balance-container">
-            
-        </div> --}}
+        <div class="balance-container">
+            <a href="/api/total-balance">OIA EU AQUIIIIIIIIIIII</a>
+            <div id="total-balance">
+                    {{#each balance}}
+                        <div>
+                            Total Income: {{sumIncomes}} -- Total Expense: {{sumExpenses}} -- Total Balance: {{balance}}
+                        </div>
+                    {{/each}}
+            </div>
+        </div>
 
         <div class="expenses-container col-6 p-0">
             <div class="expenses-form">

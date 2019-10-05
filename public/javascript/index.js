@@ -38,6 +38,22 @@ async function getRecentExpenses() {
   }
 }
 
+async function getAllBalance() {
+  try {
+    const allBalance = await axios.get('/api/total-balance');
+    const { data } = allBalance;
+    const allBalanceDiv = document.getElementById('total-balance');
+    allBalanceDiv.innerHTML = '';
+    allBalanceDiv.innerHTML = `
+      <div>
+        Total Income: ${data.totalIncome} -- Total Expense: ${data.totalExpense} -- Total Balance: ${data.balance}
+      </div>
+      `;
+  } catch (error) {
+    alert(error)
+  }
+}
+
 window.onload = () => {
   document.getElementById('income-form').onsubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +64,7 @@ window.onload = () => {
     try {
       await axios.post('/api/incomes/create', { description, value, date, category });
       await getRecentIncomes();
+      await getAllBalance();
     } catch (error) {
       alert(error);
     }
@@ -62,8 +79,10 @@ window.onload = () => {
     try {
       await axios.post('/api/expenses/create', { description, value, date, category });
       await getRecentExpenses();
+      await getAllBalance();
     } catch (error) {
       alert(error);
     }
   };
+
 };
