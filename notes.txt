@@ -5,3 +5,6 @@
 * Rodar o gulp para "watch" o sass (rodar o programa dentro da pasta):
 sass --watch public/stylesheets/sass:public/dist/css 
 gulp
+
+rm -rf node_modules/bcrypt
+npm install
