@@ -14,8 +14,8 @@ router.get('/logout', (req, res, next) => {
 router.get('/home', async (req, res) => {
   const recentIncomes = await Income.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
   const recentExpenses = await Expense.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
-  // const allIncomes = await Income.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
-  // const allExpenses = await Expense.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
+  const allIncomes = await Income.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
+  const allExpenses = await Expense.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
 
   // let sumIncomes = 0;
   // if (allIncomes.length === 1) {
@@ -35,7 +35,7 @@ router.get('/home', async (req, res) => {
   //   sumExpenses = allExpenses.reduce((a, b) => ({ value: a.value + b.value })).value;
   // }
 
-  res.render('private/home', { recentIncomes, recentExpenses, sumIncomes, sumExpenses,  balance: sumIncomes - sumExpenses });
+  res.render('private/home', { recentIncomes, recentExpenses });
 
 });
 

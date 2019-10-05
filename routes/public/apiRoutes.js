@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const Income = require('../../models/Incomes');
 const Expense = require('../../models/Expenses');
@@ -40,32 +41,16 @@ router.get('/api/recent-expenses', async (req, res) => {
   res.json(recentExpenses); 
 });
 
-router.get('/api/all-incomes', async (req, res) => {
-  // const currentId = req.session.currentUser._id
-  const allIncomes = await Income.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
-  let sumIncomes = 0;
-  if (allIncomes.length === 1) {
-    sumIncomes = allIncomes[0].value;
-  } else if (allIncomes === 0) {
-    sumIncomes = 0;
-  } else {
-    sumIncomes = allIncomes.reduce((a, b) => ({ value: a.value + b.value })).value;
-  }
-  // console.log(currentId);
-  // const allIncomes = await Income.aggregate([
-  //   { $match: { userId: currentId } },
-  //   { $group: { _id: null, sum: { $sum: '$value' } } }
-  // ]);
-  const allExpenses = await Expense.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
-  let sumExpenses = 0;
-  if (allExpenses.length === 1) {
-    sumExpenses = allExpenses[0].value;
-  } else if (allExpenses.length === 0) {
-    sumExpenses = 0;
-  } else {
-    sumExpenses = allExpenses.reduce((a, b) => ({ value: a.value + b.value })).value;
-  }
-  res.json({ sumIncomes, sumExpenses, balance: sumIncomes - sumExpenses });
+router.get('/api/total-balance', async (req, res) => {
+  const allIncomes = await Income.aggregate([
+    { $match: { userId: mongoose.Types.ObjectId(req.session.currentUser._id) } },
+    { $group: { _id: req.session.currentUser._id, sum: { $sum: '$value' } } }
+  ]);
+  const allExpenses = await Expense.aggregate([
+    { $match: { userId: mongoose.Types.ObjectId(req.session.currentUser._id) } },
+    { $group: { _id: req.session.currentUser._id, sum: { $sum: '$value' } } }
+  ]);
+  res.json({ totalIncome: allIncomes[0].sum, totalExpense: allExpenses[0].sum, balance: allIncomes[0].sum - allExpenses[0].sum });
 });
 
 module.exports = router;
