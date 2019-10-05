@@ -8,11 +8,10 @@ async function getRecentIncomes() {
     recentIncomesTableBody.innerHTML = '';
     let updatedRecentIncomes = '';
     recentIncomes.data.forEach((income) => {
-      // const incomeDate = moment('DD MMM YYYY');
       updatedRecentIncomes += `
       <tr>
         <td>${income.category}<td>
-        <td>${income.date}</td>
+        <td>${income.date.getFullYear()}</td>
         <td>${income.value}</td>
       </tr>`;
     });
@@ -25,7 +24,7 @@ async function getRecentIncomes() {
 async function getRecentExpenses() {
   try {
     const recentExpenses = await axios.get('/api/recent-expenses');
-    const recentExpensesDiv = document.getElementById('recent-expenses');
+    const recentExpensesDiv = document.getElementById('recent-expenses-table-body');
     recentExpensesDiv.innerHTML = '';
     document.getElementById('recent-expenses').innerHTML = '';
     recentExpenses.data.forEach((expense) => {

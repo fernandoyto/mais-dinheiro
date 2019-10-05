@@ -3,31 +3,27 @@
 
     <form action="/signup" method="POST">
         <div class="group">
-            <input type="text" name="firstName" placeholder="placeholder" required>        
+            <input class="effect" type="text" name="firstName" placeholder="placeholder" required>        
             <label>First Name</label>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <span class="line"></span>
         </div>
 
         <div class="group">
-            <input type="text" name="lastName" placeholder="placeholder" required>
+            <input class="effect"  type="text" name="lastName" placeholder="placeholder" required>
             <label>Last Name</label>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <span class="line"></span>
         </div>
         
         <div class="group">
-            <input type="email" name="email" placeholder="placeholder" required>
+            <input class="effect" type="email" name="email" placeholder="placeholder" required>
             <label>Email</label>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <span class="line"></span>
         </div>
 
         <div class="group">
-            <input type="password" name="password" placeholder="placeholder" required>
+            <input class="effect" type="password" name="password" placeholder="placeholder" required>
             <label>Password</label>
-            <span class="highlight"></span>
-            <span class="bar"></span>
+            <span class="line"></span>
         </div>
 
         {{#if errorMessage}}

@@ -1,91 +1,137 @@
-<h1>This is Home.hbs - A private route</h1>
+<h1 class="primary-color m-0">This is Home.hbs - A private route</h1> 
 
-<a href="/logout">Logout</a>
+<div class="container">
+    <div class="row">
 
-<div class="home-container">
-    <div class="incomes-container">
-        <div class="incomes-form">
-            <h2>
-                Create new Income
-            </h2>
-            <form id="income-form">
-                <input id="newIncDescription" type="string" name="Description" placeholder="Description">
-                <input id="newIncValue" type="number" name="Value" placeholder="Value">
-                <input id="newIncDate" type="date" name="Date" placeholder="Date">
-                <br>
-                <label for="category"></label>
-                <select name="category" id="newIncCategory">
-                    <option value="Salary">Salary</option>
-                    <option value="Freelancer">Freelancer</option>
-                    <option value="Carry Over">Carry Over</option>
-                </select>
-                <button id="new-income-btn">Add Income</button>
-            </form>
-        </div>
-        <div class="incomes-recent">
-            <h2>Recent Incomes</h2>
-            <table id="recent-incomes-table">
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody id="recent-incomes-table-body">
-                    {{#each recentIncomes}}
-                        <tr>
-                            <td>{{category}}</td>
-                            <td>{{date}}</td>
-                            <td>{{value}}</td>            
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="balance-container">
-        <a href="/api/total-balance">OIA EU AQUIIIIIIIIIIII</a>
-        <div id="total-balance">
-                {{#each balance}}
-                    <div>
-                        Total Income: {{sumIncomes}} -- Total Expense: {{sumExpenses}} -- Total Balance: {{balance}}
+        <div class="incomes-container col-6 p-0">
+            <div class="incomes-form">
+                <h2>
+                    Create new Income
+                </h2>
+                <form id="income-form">
+                    <div class="group">
+                        <input id="newIncDescription" type="string" name="Description" placeholder="placeholder" required>
+                        <label class="label-upside">Description</label>
+                        <span class="line"></span>
                     </div>
-                {{/each}}
-        </div>
-    </div>
 
-    <div class="expenses-container">
-        <div class="expenses-form">
-            <h2>
-                Create new Expense
-            </h2>
-            <form id="expense-form">
-                <input id="newExpDescription" type="string" name="Description" placeholder="Description">
-                <input id="newExpValue" type="number" name="Value" placeholder="Value">
-                <input id="newExpDate" type="date" name="Date" placeholder="Date">
-                <br>
-                <label for="category"></label>
-                <select name="category" id="newExpCategory">
-                    <option value="{{category}}">{{category}}</option>
-                    <option value="Food">Food</option>
-                    <option value="Supermarket">Supermarket</option>
-                    <option value="Transportation">Transportation</option>
-                    <option value="Entertainment">Entertainment</option>
-                </select>
-                <button id="new-expense-btn">Add Expense</button>
-            </form>
+                    <div class="group">
+                        <input id="newIncValue" type="number" name="Value" placeholder="placeholder">
+                        <label class="label-upside">Value</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <input id="newIncDate" type="date" name="Date" placeholder="placeholder">
+                        <label class="label-upside">Date</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <label class="label-upside" for="category">Category</label>
+                        <select name="category" id="newIncCategory">
+                            <option value="{{category}}">{{category}}</option>
+                            <option value="Salary">Salary</option>
+                            <option value="Freelancer">Freelancer</option>
+                            <option value="Carry Over">Carry Over</option>
+                        </select>
+                        </div>
+                    <button id="new-income-btn">Add Income</button>
+                    
+                </form>
+            </div>
+            <div>
+                <h2>Recent Incomes</h2>
+                <table id="recent-incomes-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-incomes-table-body">
+                        {{#each recentIncomes}}
+                            <tr>
+                                <td>{{category}}</td>
+                                <td>{{date}}</td>
+                                <td>{{value}}</td>            
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="expenses-recent">
-            <h2>Recent Expenses</h2>
-            <ul id="recent-expenses">
-                {{#each recentExpenses}}
-                    <li>
-                        Description: {{description}} --- Value: {{value}} --- Date: {{date}} --- Category: {{category}}
-                    </li>        
-                {{/each}}
-            </ul>
+
+        <div class="balance-container">
+            <a href="/api/total-balance">OIA EU AQUIIIIIIIIIIII</a>
+            <div id="total-balance">
+                    {{#each balance}}
+                        <div>
+                            Total Income: {{sumIncomes}} -- Total Expense: {{sumExpenses}} -- Total Balance: {{balance}}
+                        </div>
+                    {{/each}}
+            </div>
+        </div>
+
+        <div class="expenses-container col-6 p-0">
+            <div class="expenses-form">
+                <h2>
+                    Create new Expense
+                </h2>
+                <form id="expense-form">
+                    <div class="group">
+                        <input id="newExpDescription" type="string" name="Description" placeholder="Description">
+                        <label class="label-upside">Description</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <input id="newExpValue" type="number" name="Value" placeholder="Value">
+                        <label class="label-upside">Value</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <input id="newExpDate" type="date" name="Date" placeholder="Date">
+                        <label class="label-upside second-color">Date</label>
+                        <span class="line"></span>
+                    </div>
+
+                    <div class="group">
+                        <label class="label-upside" for="category">Category</label>
+                        <select name="category" id="newIncCategory">
+                            <option value="{{category}}">{{category}}</option>
+                            <option value="Food">Food</option>
+                            <option value="Supermarket">Supermarket</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <button id="new-expense-btn">Add Expense</button>
+                </form>
+            </div>
+            <div>
+                <h2>Recent Expenses</h2>
+                <table id="recent-expenses-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-expenses-table-body">
+                        {{#each recentExpenses}}
+                            <tr>
+                                <td>{{category}}</td>
+                                <td>{{date}}</td>
+                                <td>{{value}}</td>            
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
