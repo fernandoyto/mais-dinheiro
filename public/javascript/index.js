@@ -41,14 +41,13 @@ async function getRecentExpenses() {
 
 async function getAllBalance() {
   try {
-    const allBalance = await axios.get('/api/all-incomes');
+    const allBalance = await axios.get('/api/total-balance');
     const { data } = allBalance;
-    const allBalanceDiv = document.getElementById('all-incomes');
+    const allBalanceDiv = document.getElementById('total-balance');
     allBalanceDiv.innerHTML = '';
-    document.getElementById('all-incomes').innerHTML = '';
-      allBalanceDiv.innerHTML = `
+    allBalanceDiv.innerHTML = `
       <div>
-        Total Income: ${data.sumIncomes} -- Total Expense: ${data.sumExpenses} -- Total Balance: ${data.balance}
+        Total Income: ${data.totalIncome} -- Total Expense: ${data.totalExpense} -- Total Balance: ${data.balance}
       </div>
       `;
   } catch (error) {
