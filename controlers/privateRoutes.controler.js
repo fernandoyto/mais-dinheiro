@@ -2,8 +2,19 @@ const mongoose = require('mongoose');
 const Income = require('../models/Incomes');
 const Expense = require('../models/Expenses');
 
+function formatDate(date){
+  // let sd = date.toString().split('T')[0].split('-');
+  // let output = sd[2] + '/' + sd[1] + '/' + sd[0];
+  // return output;
+  return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
+
+}
+
 async function getRecentIncomes(userId) {
-  const recentIncomes = await Income.find({ userId }).sort({ date: -1 }).limit(5);
+  let recentIncomes = await Income.find({ userId }).sort({ date: -1 }).limit(5);
+  recentIncomes.forEach((income, index) => {
+   recentIncomes[index]['formattedDate'] = formatDate( new Date(recentIncomes[index].date));
+  });
   return recentIncomes;
 }
 
@@ -17,7 +28,14 @@ async function getAllIncomes(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
   ]);
-  return allIncomes;
+
+  if (allIncomes.length !== 0) {
+    return allIncomes;
+  } else {
+    return [
+      { sum : 0}
+    ]
+  }
 }
 
 async function getAllExpenses(userId) {
@@ -25,7 +43,13 @@ async function getAllExpenses(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
   ]);
-  return allExpenses;
+  if (allExpenses.length !== 0) {
+    return allExpenses;
+  } else {
+    return [
+      { sum : 0}
+    ]
+  }
 }
 
 module.exports = {

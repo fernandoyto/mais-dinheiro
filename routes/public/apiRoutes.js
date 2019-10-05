@@ -12,7 +12,8 @@ router.post('/api/incomes/create', async (req, res) => {
   const newIncome = new Income({ description, value, date, category, userId });
   try {
     await newIncome.save();
-    res.json(newIncome);
+    // res.json(newIncome);
+    res.redirect('/home');
   } catch (error) {
     console.log(error);
   }
