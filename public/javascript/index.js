@@ -29,9 +29,11 @@ async function getRecentExpenses() {
     document.getElementById('recent-expenses').innerHTML = '';
     recentExpenses.data.forEach((expense) => {
       recentExpensesDiv.innerHTML += `
-      <li>
-        Description: ${expense.description} --- Value: ${expense.value} --- Date: ${expense.date} --- Category: ${expense.category}
-      </li>`;
+      <tr>
+        <td>${expense.category}<td>
+        <td>${(expense.date)}</td>
+        <td>${expense.value}</td>
+      </tr>`;
     });
   } catch (error) {
     alert(error);

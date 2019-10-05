@@ -4158,6 +4158,10 @@ td {
   transition: inherit;
 }
 
+.txt-center {
+  text-align: center;
+}
+
 /*---------- HEADINGS ----------*/
 h1 {
   text-align: center;
@@ -4239,6 +4243,21 @@ select {
   border-bottom: 1px solid #8c887e;
 }
 
-/*---------- BUTTON ----------*/
+/*---------- TABLE ----------*/
+thead {
+  color: green;
+}
+
+tbody {
+  color: blue;
+}
+
+tfoot {
+  color: red;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
 
 /*# sourceMappingURL=main.css.map */
