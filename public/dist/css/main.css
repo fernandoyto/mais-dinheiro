@@ -4158,12 +4158,18 @@ td {
   text-align: center;
 }
 
+.div-center {
+  margin: auto;
+}
+
 /*---------- HEADINGS ----------*/
 h1 {
   text-align: center;
+  color: #ffaa00;
 }
 
 h2 {
+  text-align: center;
   color: #ffaa00;
 }
 
