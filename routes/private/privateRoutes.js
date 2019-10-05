@@ -16,11 +16,13 @@ router.get('/logout', (req, res, next) => {
 });
 
 router.get('/home', async (req, res) => {
-  const recentIncomes = await getRecentIncomes(req.session.currentUser._id);
-  const recentExpenses = await getRecentExpenses(req.session.currentUser._id);
-  const allIncomes = await getAllIncomes(req.session.currentUser._id);
-  const allExpenses = await getAllExpenses(req.session.currentUser._id);
+  const user = req.session.currentUser
+  const recentIncomes = await getRecentIncomes(user._id);
+  const recentExpenses = await getRecentExpenses(user._id);
+  const allIncomes = await getAllIncomes(user._id);
+  const allExpenses = await getAllExpenses(user._id);
   res.render('private/home', {
+    user,
     recentIncomes,
     recentExpenses,
     totalIncome: allIncomes[0].sum,
