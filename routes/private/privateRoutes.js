@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -14,29 +15,21 @@ router.get('/logout', (req, res, next) => {
 router.get('/home', async (req, res) => {
   const recentIncomes = await Income.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
   const recentExpenses = await Expense.find({ userId: req.session.currentUser._id }).sort({ date: -1 }).limit(5);
-  const allIncomes = await Income.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
-  const allExpenses = await Expense.find({ userId: req.session.currentUser._id}).sort({ date: -1 });
-
-  // let sumIncomes = 0;
-  // if (allIncomes.length === 1) {
-  //   sumIncomes = allIncomes[0].value;
-  // } else if (allIncomes === 0) {
-  //   sumIncomes = 0;
-  // } else {
-  //   sumIncomes = allIncomes.reduce((a, b) => ({ value: a.value + b.value })).value;
-  // }
- 
-  // let sumExpenses = 0;
-  // if (allExpenses.length === 1) {
-  //   sumExpenses = allExpenses[0].value;
-  // } else if (allExpenses.length === 0) {
-  //   sumExpenses = 0;
-  // } else {
-  //   sumExpenses = allExpenses.reduce((a, b) => ({ value: a.value + b.value })).value;
-  // }
-
-  res.render('private/home', { recentIncomes, recentExpenses });
-
+  const allIncomes = await Income.aggregate([
+    { $match: { userId: mongoose.Types.ObjectId(req.session.currentUser._id) } },
+    { $group: { _id: req.session.currentUser._id, sum: { $sum: '$value' } } }
+  ]);
+  const allExpenses = await Expense.aggregate([
+    { $match: { userId: mongoose.Types.ObjectId(req.session.currentUser._id) } },
+    { $group: { _id: req.session.currentUser._id, sum: { $sum: '$value' } } }
+  ]);
+  res.render('private/home', {
+    recentIncomes,
+    recentExpenses,
+    totalIncome: allIncomes[0].sum,
+    totalExpense: allExpenses[0].sum,
+    balance: allIncomes[0].sum - allExpenses[0].sum,
+  });
 });
 
 module.exports = router;
