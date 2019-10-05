@@ -8,11 +8,10 @@ async function getRecentIncomes() {
     recentIncomesTableBody.innerHTML = '';
     let updatedRecentIncomes = '';
     recentIncomes.data.forEach((income) => {
-      // const incomeDate = moment('DD MMM YYYY');
       updatedRecentIncomes += `
       <tr>
         <td>${income.category}<td>
-        <td>${income.date}</td>
+        <td>${income.date.getFullYear()}</td>
         <td>${income.value}</td>
       </tr>`;
     });

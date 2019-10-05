@@ -4062,6 +4062,10 @@ html {
   color: #8c887e;
 }
 
+.white-color {
+  color: white;
+}
+
 /*---------- BACKGROUND ----------*/
 .bg-grey {
   background-color: #8c887e;
@@ -4155,17 +4159,26 @@ td {
 }
 
 /*---------- HEADINGS ----------*/
+h1 {
+  text-align: center;
+}
+
 h2 {
   color: #ffaa00;
 }
 
 /*---------- INPUTS ----------*/
-/*---------- INPUTS ----------*/
-.label-upside, input:not(:placeholder-shown) + label, input:focus + label,
-textarea:not(:placeholder-shown) + label,
+.label-upside, input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  font-size: 15px;
+  top: -17px;
+}
+
+input:focus + label,
 textarea:focus + label {
   font-size: 15px;
   top: -17px;
+  color: #ffaa00;
 }
 
 label {
@@ -4183,8 +4196,11 @@ textarea {
   padding: 5px;
   background-color: transparent;
 }
-input:not(:placeholder-shown) + label, input:focus + label,
-textarea:not(:placeholder-shown) + label,
+input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+  outline: none;
+}
+input:focus + label,
 textarea:focus + label {
   outline: none;
 }

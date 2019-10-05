@@ -15,6 +15,7 @@ $width: 320px;
 /*------------ COLORS ------------*/
 .primary-color{ color: $primary-color-0 }
 .second-color{ color: $second-color-0 }
+.white-color{ color: white }
 
 
 /*---------- BACKGROUND ----------*/
@@ -100,31 +101,25 @@ td {
 }
 
 /*---------- HEADINGS ----------*/
+h1 {
+  text-align: center;
+}
+
 h2 {
   color: $primary-color-0
 }
 
-/*---------- INPUTS ----------*/
-
-// @mixin input-placeholder{
-//   ::-webkit-input-placeholder {@content;}
-//   :-moz-placeholder           {@content;}
-//   ::-moz-placeholder          {@content;}
-//   :-ms-input-placeholder      {@content;} 
-//   }
-
-// @include input-placeholder {
-//   color: transparent;
-//   opacity: 0;
-//   transition: inherit;
-// }
-
 
 /*---------- INPUTS ----------*/
-
 %label-movement {
   font-size: 15px;
   top: -17px;
+}
+
+%label-movement-colored {
+  font-size: 15px;
+  top: -17px;
+  color: $primary-color-0;
 }
 
 label{
@@ -142,14 +137,15 @@ textarea {
   padding: 5px;
   background-color: transparent;
 
-
-
-  &:not(:placeholder-shown) + label,
-  &:focus + label {
+  &:not(:placeholder-shown) + label{
     @extend %label-movement;
     outline: none;
-
   }
+  &:focus + label {
+    @extend %label-movement-colored;
+    outline: none;
+  }
+
   input[type="password"] {
     letter-spacing: 0.3em;
   }
@@ -164,6 +160,7 @@ textarea {
 :focus {
   outline: none;
 }
+
 
 
 /*------ LINE UNDER INPUTS -------*/
@@ -187,7 +184,6 @@ textarea {
 select {
   border: none;
   border-bottom: 1px solid $second-color-0;
-
 }
 
 
