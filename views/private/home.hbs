@@ -6,21 +6,21 @@
                 <h2>
                     Create new Income
                 </h2>
-                <form id="income-form">
+                <form action="/api/incomes/create" method="POST" id="income-form">
                     <div class="group">
-                        <input id="newIncDescription" type="string" name="Description" placeholder="placeholder" required>
+                        <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
                     </div>
 
                     <div class="group">
-                        <input id="newIncValue" type="number" name="Value" placeholder="placeholder">
+                        <input id="newIncValue" type="number" name="value" placeholder="placeholder">
                         <label class="label-upside">Value</label>
                         <span class="line"></span>
                     </div>
 
                     <div class="group">
-                        <input id="newIncDate" type="date" name="Date" placeholder="placeholder">
+                        <input id="newIncDate" type="date" name="date" placeholder="placeholder">
                         <label class="label-upside">Date</label>
                         <span class="line"></span>
                     </div>
@@ -34,7 +34,7 @@
                             <option value="Carry Over">Carry Over</option>
                         </select>
                         </div>
-                    <button id="new-income-btn">Add Income</button>
+                    <button type="submit" id="new-income-btn">Add Income</button>
                     
                 </form>
             </div>
@@ -54,7 +54,7 @@
                         {{#each recentIncomes}}
                             <tr>
                                 <td class="txt-center">{{category}}</td>
-                                <td>{{date}}</td>
+                                <td>{{formattedDate}}</td>
                                 <td>{{value}}</td>            
                             </tr>
                         {{/each}}
@@ -78,19 +78,19 @@
                 </h2>
                 <form id="expense-form">
                     <div class="group">
-                        <input id="newExpDescription" type="string" name="Description" placeholder="Description">
+                        <input id="newExpDescription" type="string" name="description" placeholder="Description">
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
                     </div>
 
                     <div class="group">
-                        <input id="newExpValue" type="number" name="Value" placeholder="Value">
+                        <input id="newExpValue" type="number" name="value" placeholder="Value">
                         <label class="label-upside">Value</label>
                         <span class="line"></span>
                     </div>
 
                     <div class="group">
-                        <input id="newExpDate" type="date" name="Date" placeholder="Date">
+                        <input id="newExpDate" type="date" name="date" placeholder="Date">
                         <label class="label-upside second-color">Date</label>
                         <span class="line"></span>
                     </div>
