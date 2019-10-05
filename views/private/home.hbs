@@ -1,4 +1,4 @@
-<div class="container">
+<div class="">
     <div class="row ">
 
  {{!----------------------------------------------- INCOMES -----------------------------------------------}}
@@ -8,7 +8,7 @@
                     Create new Income
                 </h2>
                 <form action="/api/incomes/create" method="POST" id="income-form">
-                    <div class="group d-flex justify-content-center">
+                    <div class="group">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
@@ -35,7 +35,9 @@
                             <option value="Carry Over">Carry Over</option>
                         </select>
                         </div>
-                    <button type="submit" id="new-income-btn">Add Income</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="new-income-btn">Add Income</button>
+                    </div>
                     
                 </form>
             </div>
@@ -108,7 +110,9 @@
                             <option value="Entertainment">Entertainment</option>
                         </select>
                     </div>
-                    <button type="submit" id="new-expense-btn">Add Expense</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="new-expense-btn">Add Expense</button>
+                    </div>
                 </form>
             </div>
             <div>
