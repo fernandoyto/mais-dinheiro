@@ -3,9 +3,6 @@ const Income = require('../models/Incomes');
 const Expense = require('../models/Expenses');
 
 function formatDate(date){
-  // let sd = date.toString().split('T')[0].split('-');
-  // let output = sd[2] + '/' + sd[1] + '/' + sd[0];
-  // return output;
   return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()
 
 }
