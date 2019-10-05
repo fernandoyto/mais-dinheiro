@@ -12,7 +12,6 @@ router.post('/api/incomes/create', async (req, res) => {
   const newIncome = new Income({ description, value, date, category, userId });
   try {
     await newIncome.save();
-    // res.json(newIncome);
     res.redirect('/home');
   } catch (error) {
     console.log(error);
@@ -30,7 +29,7 @@ router.post('/api/expenses/create', async (req, res) => {
   const newExpense = new Expense({ description, value, date, category, userId });
   try {
     await newExpense.save();
-    res.json(newExpense);
+    res.redirect('/home');
   } catch (error) {
     console.log(error);
   }

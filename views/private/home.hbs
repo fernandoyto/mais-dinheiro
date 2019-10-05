@@ -76,7 +76,7 @@
                 <h2>
                     Create new Expense
                 </h2>
-                <form id="expense-form">
+                <form action="/api/expenses/create" method="POST" id="expense-form">
                     <div class="group">
                         <input id="newExpDescription" type="string" name="description" placeholder="Description">
                         <label class="label-upside">Description</label>
@@ -105,7 +105,7 @@
                             <option value="Entertainment">Entertainment</option>
                         </select>
                     </div>
-                    <button id="new-expense-btn">Add Expense</button>
+                    <button type="submit" id="new-expense-btn">Add Expense</button>
                 </form>
             </div>
             <div>
