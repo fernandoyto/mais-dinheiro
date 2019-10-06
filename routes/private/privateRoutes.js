@@ -9,6 +9,10 @@ const {
   getAllExpenses,
 } = require('../../controlers/privateRoutes.controler');
 
+const {
+  formatMoney,
+} = require('../../public/javascript/helperFunctions');
+
 router.get('/logout', (req, res, next) => {
   req.session.destroy((err) => {
     res.redirect('/login');
@@ -27,7 +31,7 @@ router.get('/home', async (req, res) => {
     recentExpenses,
     totalIncome: allIncomes[0].sum,
     totalExpense: allExpenses[0].sum,
-    balance: allIncomes[0].sum - allExpenses[0].sum,
+    balance: formatMoney( allIncomes[0].sum - allExpenses[0].sum),
   });
 });
 

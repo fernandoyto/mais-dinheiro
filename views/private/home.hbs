@@ -1,14 +1,14 @@
-<div class="container">
-    <div class="row ">
+<div class="">
+    <div class="row">
 
  {{!----------------------------------------------- INCOMES -----------------------------------------------}}
-        <div class="incomes-container col-4 p-0 ">
+        <div class="col-4">
             <div class="incomes-form ">
                 <h2>
                     Create new Income
                 </h2>
                 <form action="/api/incomes/create" method="POST" id="income-form">
-                    <div class="group d-flex justify-content-center">
+                    <div class="group">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
@@ -35,41 +35,57 @@
                             <option value="Carry Over">Carry Over</option>
                         </select>
                         </div>
-                    <button type="submit" id="new-income-btn">Add Income</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="new-income-btn">Add Income</button>
+                    </div>
                     
                 </form>
             </div>
             <div>
                 <h2>Recent Incomes</h2>
-                <table id="recent-incomes-table">
-                    <thead class="container">
-                        <div class="row">
-                            <tr class="col-12">
-                                <th>Category</th>
-                                <th>Date</th>
-                                <th>Value</th>
-                            </tr>
-                        </div>
-                    </thead>
-                    <tbody id="recent-incomes-table-body">
-                        {{#each recentIncomes}}
-                            <tr>
-                                <td class="txt-center">{{category}}</td>
-                                <td>{{formattedDate}}</td>
-                                <td>{{value}}</td>            
-                            </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                <div class="div-center">
+                    <table id="recent-incomes-table">
+                        <thead class="container">
+                            <div class="row m-0">
+                                <tr class="col-12">
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Value</th>
+                                </tr>
+                            </div>
+                        </thead>
+                        <tbody id="recent-incomes-table-body">
+                            {{#each recentIncomes}}
+                                <tr>
+                                    <td>{{category}}</td>
+                                    <td>{{formattedDate}}</td>
+                                    <td>${{formattedValue}}</td>            
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
  {{!----------------------------------------------- BALANCE -----------------------------------------------}}
         <div class="balance-container col-4 p-0">
             <div id="total-balance">
-                Total Income: {{totalIncome}}
-                Total Expense: {{totalExpense}}
-                Balance: {{balance}}
+                <h2>
+                    Total Income: <br>
+                    <span class="second-color">${{totalIncome}}</span><br><br>
+
+                    Total Expense: <br>
+                    <span class="second-color">${{totalExpense}}</span><br><br>
+
+                    <div>
+                        <span>Balance:</span><br>
+                        <span class="second-color">${{balance}}</span><br><br>
+
+                    </div>
+
+                                                            
+                </h2>
             </div>
         </div>
 
@@ -108,33 +124,37 @@
                             <option value="Entertainment">Entertainment</option>
                         </select>
                     </div>
-                    <button type="submit" id="new-expense-btn">Add Expense</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" id="new-expense-btn">Add Expense</button>
+                    </div>
                 </form>
             </div>
             <div>
                 <h2>Recent Expenses</h2>
-                <table id="recent-expenses-table">
-                    <thead class="container">
-                        <div class="row">
-                        <tr class="col-12">
-                            <div class="">
-                            <th>Category</th>
-                            <th>Date</th>
-                            <th>Value</th>
-                            </div>
-                        </tr>
-                        </div>
-                    </thead>
-                    <tbody id="recent-expenses-table-body">
-                        {{#each recentExpenses}}
-                            <tr>
-                                <td class="txt-center">{{category}}</td>
-                                <td>{{formattedDate}}</td>
-                                <td>{{value}}</td>            
+                <div class="div-center">
+                    <table id="recent-expenses-table">
+                        <thead class="container">
+                            <div class="row m-0">
+                            <tr class="col-12">
+                                <div class="">
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Value</th>
+                                </div>
                             </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                            </div>
+                        </thead>
+                        <tbody id="recent-expenses-table-body">
+                            {{#each recentExpenses}}
+                                <tr>
+                                    <td class="txt-center">{{category}}</td>
+                                    <td>{{formattedDate}}</td>
+                                    <td>${{formattedValue}}</td>            
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -4129,37 +4129,18 @@ td {
   margin-right: auto;
 }
 
-.group {
-  position: relative;
-  margin: 30px 0;
-}
-.group ::-webkit-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group ::-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-ms-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-
 .txt-center {
   text-align: center;
 }
 
 .div-center {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.container-input-home {
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /*---------- HEADINGS ----------*/
@@ -4196,6 +4177,7 @@ label {
 
 input,
 textarea {
+  width: 260px;
   display: block;
   border: none;
   border-bottom: 1px solid #8c887e;
@@ -4215,12 +4197,45 @@ textarea input[type=password] {
   letter-spacing: 0.3em;
 }
 
+input[type=date] {
+  text-align: center;
+  padding-left: 56px;
+}
+
 .label-upside {
   outline: none;
 }
 
 :focus {
   outline: none;
+}
+
+.group {
+  position: relative;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.group ::-webkit-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group ::-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-ms-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
 }
 
 /*------ LINE UNDER INPUTS -------*/
@@ -4243,23 +4258,33 @@ textarea input[type=password] {
 select {
   border: none;
   border-bottom: 1px solid #8c887e;
+  width: 260px;
 }
 
 /*---------- TABLE ----------*/
 thead {
-  color: green;
-}
-
-tbody {
-  color: blue;
-}
-
-tfoot {
-  color: red;
+  background-color: #8c887e;
+  color: #ffaa00;
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #8c887e;
+}
+
+table {
+  width: 260px;
+}
+
+td {
+  padding: 1px 6px;
+  text-align: center;
+}
+
+/*---------- BUTTON ----------*/
+button {
+  width: 260px;
+  background-color: #8c887e;
+  border: none;
 }
 
 /*# sourceMappingURL=main.css.map */
