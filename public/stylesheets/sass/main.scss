@@ -192,6 +192,17 @@ select {
   border-bottom: 1px solid $second-color-0;
 }
 
+/*---------- CARD ----------*/
+.card {
+  width: 30rem;
+}
+
+
+/*---------- IMAGE ----------*/
+.img-about-us {
+  max-width: 100%;
+  height: auto;
+}
 
 /*---------- TABLE ----------*/
 thead {color:green;}

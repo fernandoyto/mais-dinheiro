@@ -4245,6 +4245,17 @@ select {
   border-bottom: 1px solid #8c887e;
 }
 
+/*---------- CARD ----------*/
+.card {
+  width: 30rem;
+}
+
+/*---------- IMAGE ----------*/
+.img-about-us {
+  max-width: 100%;
+  height: auto;
+}
+
 /*---------- TABLE ----------*/
 thead {
   color: green;
