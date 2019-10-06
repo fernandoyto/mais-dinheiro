@@ -4177,9 +4177,7 @@ label {
 
 input,
 textarea {
-  width: 100%;
-  margin-left: 110px;
-  margin-right: 110px;
+  width: 260px;
   display: block;
   border: none;
   border-bottom: 1px solid #8c887e;
@@ -4260,9 +4258,7 @@ input[type=date] {
 select {
   border: none;
   border-bottom: 1px solid #8c887e;
-  width: 100%;
-  margin-left: 110px;
-  margin-right: 110px;
+  width: 260px;
 }
 
 /*---------- TABLE ----------*/
@@ -4275,9 +4271,20 @@ table, th, td {
   border: 1px solid #8c887e;
 }
 
+table {
+  width: 260px;
+}
+
 td {
   padding: 1px 6px;
   text-align: center;
+}
+
+/*---------- BUTTON ----------*/
+button {
+  width: 260px;
+  background-color: #8c887e;
+  border: none;
 }
 
 /*# sourceMappingURL=main.css.map */

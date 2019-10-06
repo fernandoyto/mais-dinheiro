@@ -9,6 +9,8 @@
 /*------------ VARIABLES ------------*/
 $primary-color-0: #ffaa00;
 $second-color-0: #8c887e;
+$red-color: #E8260C;
+$green-color: #00B35B;
 $muted-color: mix(white, $primary-color-0, 70%);
 $width: 320px;
 
@@ -125,9 +127,8 @@ label{
 
 input,
 textarea {
-  width: 100%; 
-  margin-left: 110px;
-  margin-right: 110px;
+  width: 260px; 
+
   display: block;
   border: none;
   border-bottom: 1px solid $second-color-0;
@@ -208,9 +209,8 @@ input[type="date"] {
 select {
   border: none;
   border-bottom: 1px solid $second-color-0;
-  width: 100%;
-  margin-left: 110px;
-  margin-right: 110px;
+  width: 260px; 
+
 }
 
 
@@ -222,7 +222,10 @@ thead {
 
 table, th, td {
   border: 1px solid $second-color-0;
+}
 
+table {
+  width: 260px; 
 }
 
 td {
@@ -230,5 +233,11 @@ td {
   text-align: center;
 }
 
+/*---------- BUTTON ----------*/
+button {
+  width: 260px; 
+  background-color: $second-color-0;
+  border: none
+}
 
 

@@ -59,7 +59,7 @@
                                 <tr>
                                     <td>{{category}}</td>
                                     <td>{{formattedDate}}</td>
-                                    <td>${{value}}</td>            
+                                    <td>${{formattedValue}}</td>            
                                 </tr>
                             {{/each}}
                         </tbody>
@@ -78,8 +78,11 @@
                     Total Expense: <br>
                     <span class="second-color">${{totalExpense}}</span><br><br>
 
-                    Balance: <br>
-                    <span class="second-color">${{balance}}</span><br><br>
+                    <div>
+                        <span>Balance:</span><br>
+                        <span class="second-color">${{balance}}</span><br><br>
+
+                    </div>
 
                                                             
                 </h2>
@@ -146,7 +149,7 @@
                                 <tr>
                                     <td class="txt-center">{{category}}</td>
                                     <td>{{formattedDate}}</td>
-                                    <td>${{value}}</td>            
+                                    <td>${{formattedValue}}</td>            
                                 </tr>
                             {{/each}}
                         </tbody>
