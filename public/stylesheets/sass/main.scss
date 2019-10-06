@@ -9,6 +9,8 @@
 /*------------ VARIABLES ------------*/
 $primary-color-0: #ffaa00;
 $second-color-0: #8c887e;
+$red-color: #E8260C;
+$green-color: #00B35B;
 $muted-color: mix(white, $primary-color-0, 70%);
 $width: 320px;
 
@@ -75,25 +77,7 @@ td {
 }
 
 #title {
-    margin-right: auto;
-}
-
-.group {
-    position: relative;
-    margin: 30px 0;
-
-    @mixin input-placeholder{
-      ::-webkit-input-placeholder {@content;}
-      :-moz-placeholder           {@content;}
-      ::-moz-placeholder          {@content;}
-      :-ms-input-placeholder      {@content;} 
-    }
-
-    @include input-placeholder {
-      color: transparent;
-      opacity: 0;
-      transition: inherit;
-    }
+  margin-right: auto;
 }
 
 .txt-center {
@@ -101,7 +85,13 @@ td {
 }
 
 .div-center {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.container-input-home {
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /*---------- HEADINGS ----------*/
@@ -137,6 +127,8 @@ label{
 
 input,
 textarea {
+  width: 260px; 
+
   display: block;
   border: none;
   border-bottom: 1px solid $second-color-0;
@@ -157,6 +149,10 @@ textarea {
   }
 
 }
+input[type="date"] {
+  text-align: center;
+  padding-left: 56px;
+}
 
 .label-upside {
   @extend %label-movement;
@@ -167,6 +163,29 @@ textarea {
   outline: none;
 }
 
+.group {
+  position: relative;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+
+  @mixin input-placeholder{
+    ::-webkit-input-placeholder {@content;}
+    :-moz-placeholder           {@content;}
+    ::-moz-placeholder          {@content;}
+    :-ms-input-placeholder      {@content;} 
+  }
+
+  @include input-placeholder {
+    color: transparent;
+    opacity: 0;
+    transition: inherit;
+  }
+
+  
+}
 
 
 /*------ LINE UNDER INPUTS -------*/
@@ -190,6 +209,8 @@ textarea {
 select {
   border: none;
   border-bottom: 1px solid $second-color-0;
+  width: 260px; 
+
 }
 
 /*---------- CARD ----------*/
@@ -205,10 +226,29 @@ select {
 }
 
 /*---------- TABLE ----------*/
-thead {color:green;}
-tbody {color:blue;}
-tfoot {color:red;}
+thead {
+  background-color: $second-color-0;
+  color: $primary-color-0;
+}
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid $second-color-0;
 }
+
+table {
+  width: 260px; 
+}
+
+td {
+  padding: 1px 6px;
+  text-align: center;
+}
+
+/*---------- BUTTON ----------*/
+button {
+  width: 260px; 
+  background-color: $second-color-0;
+  border: none
+}
+
+
