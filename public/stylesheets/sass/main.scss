@@ -50,13 +50,15 @@ header {
 }
 
 header li a{
-    color: $primary-color-0;
-    text-decoration: none;
+  font-size: 23px;
+  color: $primary-color-0;
+  text-decoration: $primary-color-0;
 }
 
+
 header li a:hover {
-    font-size: 25px;
-    transition: 0.4s;
+    border-bottom: 2px solid $second-color-0;
+    transition: 3s;
 }
 
 
@@ -69,7 +71,7 @@ ul {
 }
 
 li {
-    margin: 20px;
+  margin: 20px;
 }
 
 td {
@@ -183,8 +185,6 @@ input[type="date"] {
     opacity: 0;
     transition: inherit;
   }
-
-  
 }
 
 
@@ -192,7 +192,7 @@ input[type="date"] {
 .effect ~ .line{
   position: absolute; 
   bottom: 0; 
-  left: 0; 
+  left: -15px; 
   width: 0; 
   height: 2px; 
   background-color: $primary-color-0; 
@@ -200,8 +200,9 @@ input[type="date"] {
 }
 
 .effect:focus ~ .line, .has-content.effect ~ .line {
-  width: 140px; 
+  width: 260px; 
   transition: 0.4s;
+  margin-left: 14px;
 }
 
 
@@ -210,7 +211,7 @@ select {
   border: none;
   border-bottom: 1px solid $second-color-0;
   width: 260px; 
-
+  text-align: center;
 }
 
 
@@ -237,7 +238,27 @@ td {
 button {
   width: 260px; 
   background-color: $second-color-0;
-  border: none
+  color: white;
+  border: 2px solid $second-color-0;
+  padding: 0.2em 0;  
+  border-radius: 5px;
+  font-size: 1.1em
+  /*-- effects --*/
+  // -webkit-transition: background-color 0.3s, color 0.3s;
+	// transition: background-color 0.3s, color 0.3s;
 }
+
+button:hover {
+	background-color: #fff;
+  color: $second-color-0;
+  border: 2px solid $second-color-0;
+}
+
+.button:focus {
+	outline: none;
+}
+
+/*---------- NAVBAR ----------*/
+
 
 

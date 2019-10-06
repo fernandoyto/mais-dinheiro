@@ -4100,13 +4100,14 @@ header {
 }
 
 header li a {
+  font-size: 23px;
   color: #ffaa00;
-  text-decoration: none;
+  text-decoration: #ffaa00;
 }
 
 header li a:hover {
-  font-size: 25px;
-  transition: 0.4s;
+  border-bottom: 2px solid #8c887e;
+  transition: 3s;
 }
 
 ul {
@@ -4242,7 +4243,7 @@ input[type=date] {
 .effect ~ .line {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: -15px;
   width: 0;
   height: 2px;
   background-color: #ffaa00;
@@ -4250,8 +4251,9 @@ input[type=date] {
 }
 
 .effect:focus ~ .line, .has-content.effect ~ .line {
-  width: 140px;
+  width: 260px;
   transition: 0.4s;
+  margin-left: 14px;
 }
 
 /*---------- SELECT ----------*/
@@ -4259,6 +4261,7 @@ select {
   border: none;
   border-bottom: 1px solid #8c887e;
   width: 260px;
+  text-align: center;
 }
 
 /*---------- TABLE ----------*/
@@ -4284,7 +4287,23 @@ td {
 button {
   width: 260px;
   background-color: #8c887e;
-  border: none;
+  color: white;
+  border: 2px solid #8c887e;
+  padding: 0.2em 0;
+  border-radius: 5px;
+  font-size: 1.1em;
 }
+
+button:hover {
+  background-color: #fff;
+  color: #8c887e;
+  border: 2px solid #8c887e;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/*---------- NAVBAR ----------*/
 
 /*# sourceMappingURL=main.css.map */
