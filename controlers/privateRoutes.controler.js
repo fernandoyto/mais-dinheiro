@@ -49,9 +49,28 @@ async function getAllExpenses(userId) {
   return [{ sum: 0 }];
 }
 
+async function getBalanceArray(userId) {
+  const recentIncomes = await Income.find({ userId }).sort({ date: -1 }).limit(5);
+  const recentExpenses = await Expense.find({ userId }).sort({ date: -1 }).limit(5);
+  const arrayDelete =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+  
+  for( let i=0; i<arrayDelete; i++) {
+    
+    totalDaysInCurrentMonthArray.push(count)
+    count ++;
+}
+  
+  // recentExpenses.forEach((income, index) => {
+  //   recentExpenses[index].formattedDate = formatDate(new Date(recentExpenses[index].date));
+  // })
+  // console.log(recentIncomes )
+  return recentIncomes ;
+}
+
 module.exports = {
   getRecentIncomes,
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
+  getBalanceArray
 };
