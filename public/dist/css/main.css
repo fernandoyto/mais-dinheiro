@@ -4075,6 +4075,23 @@ html {
   background-color: #ffaa00;
 }
 
+/*---------- LANDING ----------*/
+.landing-container {
+  position: relative;
+}
+
+.landing {
+  height: 90vh;
+}
+
+.landing h1 {
+  font-size: 5vh;
+}
+
+.landing p {
+  font-size: 2.5vh;
+}
+
 /*---------- GENERAL ----------*/
 * {
   font-family: "Source Sans Pro", sans-serif;
