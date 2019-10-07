@@ -8,6 +8,10 @@ let monthNamesArray = [
     "October", "November", "December"
 ];
 
+// COULDNT IMPORT balanceArrayToChart TOFIX
+// var privateRoutes = require('../../routes/private/privateRoutes');
+
+
 function calculateDaysInCurrentMonthArray() {
     let count = 1;
     for( let i=0; i<totalDaysInCurrentMonth; i++) {

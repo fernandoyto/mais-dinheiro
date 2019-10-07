@@ -50,21 +50,45 @@ async function getAllExpenses(userId) {
 }
 
 async function getBalanceArray(userId) {
-  const recentIncomes = await Income.find({ userId }).sort({ date: -1 }).limit(5);
-  const recentExpenses = await Expense.find({ userId }).sort({ date: -1 }).limit(5);
+  let daysArray = [];
+  let valueArray = [];
+  let sumOfDay, x, y;
+  let totalBalanceInCurrentMonthArray = [];
+  
+  const recentIncomes = await Income.aggregate([
+    {$addFields: {  "month" : {$month: '$date'}}},
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentDate.getMonth() } },
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentMonth } },
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: '$month' } },
+    { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } },  //como colocar o mes sem ser chumbado????
+  ]);
+
+  recentIncomes.forEach((income, index) => {
+    daysArray.push( new Date(recentIncomes[index].date).getDate() );
+    valueArray.push( recentIncomes[index].value );
+  });
+
   const arrayDelete =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
   
-  for( let i=0; i<arrayDelete; i++) {
-    
-    totalDaysInCurrentMonthArray.push(count)
-    count ++;
-}
+  for(  i=0; i<arrayDelete.length; i++) {
+    x = i;
+    sumOfDay = 0;
+    for(  j=0; j<daysArray.length; j++) {
+      y = j;
+        if( arrayDelete[x] === daysArray[y]){
+        sumOfDay += valueArray[j]
+        } 
+        if( y === daysArray.length-1 && sumOfDay !== 0){
+        totalBalanceInCurrentMonthArray.push(sumOfDay)
+        } 
+        if(y === daysArray.length-1 && sumOfDay == 0 ) {
+        totalBalanceInCurrentMonthArray.push(0)
+        }
+    }
+  }
   
-  // recentExpenses.forEach((income, index) => {
-  //   recentExpenses[index].formattedDate = formatDate(new Date(recentExpenses[index].date));
-  // })
-  // console.log(recentIncomes )
-  return recentIncomes ;
+  // console.log(totalBalanceInCurrentMonthArray)
+  return totalBalanceInCurrentMonthArray ;
 }
 
 module.exports = {
@@ -72,5 +96,5 @@ module.exports = {
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
-  getBalanceArray
+  getBalanceArray,
 };
