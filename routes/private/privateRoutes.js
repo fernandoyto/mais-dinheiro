@@ -1,13 +1,18 @@
 const express = require('express');
-
 const router = express.Router();
+var balanceArrayToChart; // COULDNT IMPORT balanceArrayToChart TOFIX
 
 const {
   getRecentIncomes,
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
+  getBalanceArray
 } = require('../../controlers/privateRoutes.controler');
+
+const {
+  formatMoney,
+} = require('../../public/javascript/helperFunctions');
 
 router.get('/logout', (req, res, next) => {
   req.session.destroy((err) => {
@@ -21,14 +26,22 @@ router.get('/home', async (req, res) => {
   const recentExpenses = await getRecentExpenses(user._id);
   const allIncomes = await getAllIncomes(user._id);
   const allExpenses = await getAllExpenses(user._id);
+  const BalanceArray = await getBalanceArray(user._id);
+  balanceArrayToChart = BalanceArray; // COULDNT IMPORT balanceArrayToChart TOFIX
   res.render('private/home', {
     user,
     recentIncomes,
     recentExpenses,
     totalIncome: allIncomes[0].sum,
     totalExpense: allExpenses[0].sum,
-    balance: allIncomes[0].sum - allExpenses[0].sum,
+    balance: formatMoney( allIncomes[0].sum - allExpenses[0].sum),
+    BalanceArray
   });
 });
 
+// COULDNT IMPORT balanceArrayToChart TOFIX
+exports.balanceArrayToChart = balanceArrayToChart;
+
 module.exports = router;
+
+

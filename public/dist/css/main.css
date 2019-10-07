@@ -4075,6 +4075,23 @@ html {
   background-color: #ffaa00;
 }
 
+/*---------- LANDING ----------*/
+.landing-container {
+  position: relative;
+}
+
+.landing {
+  height: 90vh;
+}
+
+.landing h1 {
+  font-size: 5vh;
+}
+
+.landing p {
+  font-size: 2.5vh;
+}
+
 /*---------- GENERAL ----------*/
 * {
   font-family: "Source Sans Pro", sans-serif;
@@ -4100,13 +4117,14 @@ header {
 }
 
 header li a {
+  font-size: 23px;
   color: #ffaa00;
-  text-decoration: none;
+  text-decoration: #ffaa00;
 }
 
 header li a:hover {
-  font-size: 25px;
-  transition: 0.4s;
+  border-bottom: 2px solid #8c887e;
+  transition: 3s;
 }
 
 ul {
@@ -4129,37 +4147,18 @@ td {
   margin-right: auto;
 }
 
-.group {
-  position: relative;
-  margin: 30px 0;
-}
-.group ::-webkit-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group ::-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-ms-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-
 .txt-center {
   text-align: center;
 }
 
 .div-center {
-  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.container-input-home {
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 /*---------- HEADINGS ----------*/
@@ -4196,6 +4195,7 @@ label {
 
 input,
 textarea {
+  width: 260px;
   display: block;
   border: none;
   border-bottom: 1px solid #8c887e;
@@ -4215,6 +4215,11 @@ textarea input[type=password] {
   letter-spacing: 0.3em;
 }
 
+input[type=date] {
+  text-align: center;
+  padding-left: 56px;
+}
+
 .label-upside {
   outline: none;
 }
@@ -4223,11 +4228,39 @@ textarea input[type=password] {
   outline: none;
 }
 
+.group {
+  position: relative;
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.group ::-webkit-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group ::-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-ms-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+
 /*------ LINE UNDER INPUTS -------*/
 .effect ~ .line {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: -15px;
   width: 0;
   height: 2px;
   background-color: #ffaa00;
@@ -4235,31 +4268,70 @@ textarea input[type=password] {
 }
 
 .effect:focus ~ .line, .has-content.effect ~ .line {
-  width: 140px;
+  width: 260px;
   transition: 0.4s;
+  margin-left: 14px;
 }
 
 /*---------- SELECT ----------*/
 select {
   border: none;
   border-bottom: 1px solid #8c887e;
+  width: 260px;
+  text-align: center;
+}
+
+/*---------- CARD ----------*/
+.card {
+  width: 30rem;
+}
+
+/*---------- IMAGE ----------*/
+.img-about-us {
+  max-width: 100%;
+  height: auto;
 }
 
 /*---------- TABLE ----------*/
 thead {
-  color: green;
-}
-
-tbody {
-  color: blue;
-}
-
-tfoot {
-  color: red;
+  background-color: #8c887e;
+  color: #ffaa00;
 }
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #8c887e;
 }
+
+table {
+  width: 260px;
+}
+
+td {
+  padding: 1px 6px;
+  text-align: center;
+}
+
+/*---------- BUTTON ----------*/
+button {
+  width: 260px;
+  background-color: #8c887e;
+  color: white;
+  border: 2px solid #8c887e;
+  padding: 0.2em 0;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #8c887e;
+  border: 2px solid #8c887e;
+}
+
+.button:focus {
+  outline: none;
+}
+
+/*---------- NAVBAR ----------*/
 
 /*# sourceMappingURL=main.css.map */
