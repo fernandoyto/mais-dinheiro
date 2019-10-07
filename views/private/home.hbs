@@ -4,7 +4,7 @@
  {{!----------------------------------------------- INCOMES -----------------------------------------------}}
         <div class="col-4">
             <div class="incomes-form ">
-                <h2>
+                <h2 class="m-0">
                     Create new Income
                 </h2>
                 <form action="/api/incomes/create" method="POST" id="income-form">
@@ -26,7 +26,7 @@
                         <span class="line"></span>
                     </div>
 
-                    <div class="group">
+                    <div class="group mb-1">
                         <label class="label-upside" for="category">Category</label>
                         <select name="category" id="newIncCategory">
                             <option value="{{category}}">{{category}}</option>
@@ -42,7 +42,7 @@
                 </form>
             </div>
             <div>
-                <h2>Recent Incomes</h2>
+                <h2 class="mb-1">Recent Incomes</h2>
                 <div class="div-center">
                     <table id="recent-incomes-table">
                         <thead class="container">
@@ -71,7 +71,7 @@
  {{!----------------------------------------------- BALANCE -----------------------------------------------}}
         <div class="balance-container col-4 p-0">
             <div id="total-balance">
-                <h2>
+                <h2 class="m-0">
                     Total Income: <br>
                     <span class="second-color">${{totalIncome}}</span><br><br>
 
@@ -94,7 +94,7 @@
  {{!----------------------------------------------- EXPENSE -----------------------------------------------}}
         <div class="expenses-container col-4 p-0">
             <div class="expenses-form">
-                <h2>
+                <h2 class="m-0">
                     Create new Expense
                 </h2>
                 <form action="/api/expenses/create" method="POST" id="expense-form">
@@ -116,7 +116,7 @@
                         <span class="line"></span>
                     </div>
 
-                    <div class="group">
+                    <div class="group mb-1">
                         <label class="label-upside" for="category">Category</label>
                         <select name="category" id="newIncCategory">
                             <option value="{{category}}">{{category}}</option>
@@ -132,7 +132,7 @@
                 </form>
             </div>
             <div>
-                <h2>Recent Expenses</h2>
+                <h2 class="mb-1">Recent Expenses</h2>
                 <div class="div-center">
                     <table id="recent-expenses-table">
                         <thead class="container">
