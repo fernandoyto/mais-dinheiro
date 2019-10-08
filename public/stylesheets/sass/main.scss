@@ -26,7 +26,6 @@ $width: 320px;
 
 /*---------- LANDING ----------*/
 .landing-container{
-  position: relative;
 }
 
 .landing {
@@ -34,12 +33,15 @@ $width: 320px;
 }
 
 .landing h1 {
-  font-size: 5vh;
+  font-size: 6vh;
+  text-align: left;
 }
 
 .landing p {
   font-size: 2.5vh
 }
+
+
 
 /*---------- GENERAL ----------*/
 * {
