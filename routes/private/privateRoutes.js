@@ -26,8 +26,8 @@ router.get('/home', async (req, res) => {
   const recentExpenses = await getRecentExpenses(user._id);
   const allIncomes = await getAllIncomes(user._id);
   const allExpenses = await getAllExpenses(user._id);
-  const BalanceArray = await getBalanceArray(user._id);
-  balanceArrayToChart = BalanceArray; // COULDNT IMPORT balanceArrayToChart TOFIX
+  const balanceArray = await getBalanceArray(user._id);
+  console.log(balanceArray);
   res.render('private/home', {
     user,
     recentIncomes,
@@ -35,13 +35,9 @@ router.get('/home', async (req, res) => {
     totalIncome: allIncomes[0].sum,
     totalExpense: allExpenses[0].sum,
     balance: formatMoney( allIncomes[0].sum - allExpenses[0].sum),
-    BalanceArray
+    balanceArray,
   });
 });
 
-// COULDNT IMPORT balanceArrayToChart TOFIX
-exports.balanceArrayToChart = balanceArrayToChart;
 
 module.exports = router;
-
-

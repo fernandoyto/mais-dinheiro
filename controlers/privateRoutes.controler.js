@@ -4,7 +4,7 @@ const Expense = require('../models/Expenses');
 
 const {
   formatDate,
-  formatMoney
+  formatMoney,
 } = require('../public/javascript/helperFunctions');
 
 async function getRecentIncomes(userId) {
@@ -42,7 +42,7 @@ async function getAllExpenses(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
   ]);
-  
+
   if (allExpenses.length !== 0) {
     return allExpenses;
   }
@@ -50,45 +50,44 @@ async function getAllExpenses(userId) {
 }
 
 async function getBalanceArray(userId) {
-  let daysArray = [];
-  let valueArray = [];
-  let sumOfDay, x, y;
-  let totalBalanceInCurrentMonthArray = [];
-  
+  const daysArray = [];
+  const valueArray = [];
+  let sumOfDay; let x; let y;
+  const totalBalanceInCurrentMonthArray = [];
   const recentIncomes = await Income.aggregate([
-    {$addFields: {  "month" : {$month: '$date'}}},
+    { $addFields: { month: { $month: '$date' } } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentDate.getMonth() } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentMonth } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: '$month' } },
-    { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } },  //como colocar o mes sem ser chumbado????
+    { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } }, // como colocar o mes sem ser chumbado????
   ]);
 
   recentIncomes.forEach((income, index) => {
-    daysArray.push( new Date(recentIncomes[index].date).getDate() );
-    valueArray.push( recentIncomes[index].value );
+    daysArray.push(new Date(recentIncomes[index].date).getDate());
+    valueArray.push(recentIncomes[index].value);
   });
 
-  const arrayDelete =  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-  
-  for(  i=0; i<arrayDelete.length; i++) {
+  const arrayDelete = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+
+  for (let i = 0; i < arrayDelete.length; i++) {
     x = i;
     sumOfDay = 0;
-    for(  j=0; j<daysArray.length; j++) {
+    for (let j = 0; j < daysArray.length; j++) {
       y = j;
-        if( arrayDelete[x] === daysArray[y]){
-        sumOfDay += valueArray[j]
-        } 
-        if( y === daysArray.length-1 && sumOfDay !== 0){
-        totalBalanceInCurrentMonthArray.push(sumOfDay)
-        } 
-        if(y === daysArray.length-1 && sumOfDay == 0 ) {
-        totalBalanceInCurrentMonthArray.push(0)
-        }
+      if (arrayDelete[x] === daysArray[y]) {
+        sumOfDay += valueArray[j];
+      }
+      if (y === daysArray.length - 1 && sumOfDay !== 0) {
+        totalBalanceInCurrentMonthArray.push(sumOfDay);
+      }
+      if (y === daysArray.length - 1 && sumOfDay == 0) {
+        totalBalanceInCurrentMonthArray.push(0);
+      }
     }
   }
-  
-  // console.log(totalBalanceInCurrentMonthArray)
-  return totalBalanceInCurrentMonthArray ;
+
+  // console.log('back',totalBalanceInCurrentMonthArray)
+  return totalBalanceInCurrentMonthArray;
 }
 
 module.exports = {
