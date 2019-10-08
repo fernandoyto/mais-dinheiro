@@ -7,10 +7,11 @@ const monthNamesArray = [
   'July', 'August', 'September',
   'October', 'November', 'December',
 ];
+let totalExpensesInCurrentMonthArray = [];
 
-// COULDNT IMPORT balanceArrayToChart TOFIX
-// var privateRoutes = require('../../routes/private/privateRoutes');
-
+totalExpensesInCurrentMonthArray = chartValue.split(',').map((item) => {
+    return parseInt(item, 10);
+});
 
 function calculateDaysInCurrentMonthArray() {
   let count = 1;
@@ -25,15 +26,7 @@ function getMonthName(month) {
   return monthNamesArray[month.getMonth()];
 }
 
-let oi = [];
 
-function teste (obj) {
-  oi = obj.split(',').map((item) => {
-    return parseInt(item, 10);
-  });
-}
-teste(chartValue);
-console.log(oi);
 calculateDaysInCurrentMonthArray();
 
 // ---------------------------------- START THE LOGIC TO CREATE THE CHART -----------------
@@ -46,10 +39,10 @@ let chart = new Chart(ctx, {
   data: {
     labels: totalDaysInCurrentMonthArray,
     datasets: [{
-      label: `Balance of ${getMonthName(currentDate)}`,
+      label: `Expenses of ${getMonthName(currentDate)}`,
       backgroundColor: '#ffaa00',
       borderColor: '#ffaa00',
-      data: oi,
+      data: totalExpensesInCurrentMonthArray,
     }],
   },
 
