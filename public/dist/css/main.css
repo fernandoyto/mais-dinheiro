@@ -4076,16 +4076,13 @@ html {
 }
 
 /*---------- LANDING ----------*/
-.landing-container {
-  position: relative;
-}
-
 .landing {
   height: 90vh;
 }
 
 .landing h1 {
-  font-size: 5vh;
+  font-size: 6vh;
+  text-align: left;
 }
 
 .landing p {
