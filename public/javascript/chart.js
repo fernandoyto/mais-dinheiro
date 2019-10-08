@@ -25,6 +25,17 @@ function getMonthName(month) {
     return monthNamesArray[month.getMonth()];
 };
 
+let oi;
+
+function teste(obj){
+    oi = obj.split(',').map(function(item) {
+        return parseInt(item,10)
+    })
+
+    console.log(oi)
+    console.log( totalDaysInCurrentMonthArray)
+    console.log(typeof oi, typeof totalDaysInCurrentMonthArray)
+}
 
 calculateDaysInCurrentMonthArray()
 
@@ -41,7 +52,7 @@ var chart = new Chart(ctx, {
             label: 'Balance of ' + getMonthName(currentDate),
             backgroundColor: '#ffaa00',
             borderColor: 'ffaa00',
-            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            data: [0, 0, 0, 1234, 246, 4576, -300, 0, 0, 0, 0, 0, 0, 0, 0, 0, 123, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 123, 0]
         }]
     },
 

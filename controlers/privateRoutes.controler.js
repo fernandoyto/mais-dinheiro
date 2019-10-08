@@ -87,7 +87,7 @@ async function getBalanceArray(userId) {
     }
   }
   
-  // console.log(totalBalanceInCurrentMonthArray)
+  // console.log('back',totalBalanceInCurrentMonthArray)
   return totalBalanceInCurrentMonthArray ;
 }
 
