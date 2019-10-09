@@ -9,8 +9,11 @@
 /*------------ VARIABLES ------------*/
 $primary-color-0: #ffaa00;
 $second-color-0: #8c887e;
-$red-color: #E8260C;
-$green-color: #00B35B;
+// $red-color: #E8260C;
+$red-color: #d52841; 
+// $green-color: #00B35B;
+$green-color: #00a189;
+
 $muted-color: mix(white, $primary-color-0, 70%);
 $width: 320px;
 
@@ -45,6 +48,10 @@ $width: 320px;
 .landing img {
   height: 100%;
   width: 100%;
+}
+
+.col-itens {
+  max-width: 300px;;
 }
 
 /*---------- GENERAL ----------*/
@@ -128,6 +135,10 @@ td {
 .container-input-home {
   padding-right: 5px;
   padding-left: 5px;
+}
+
+.float-right {
+  float: right;
 }
 
 /*---------- HEADINGS ----------*/
