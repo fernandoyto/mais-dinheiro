@@ -26,6 +26,7 @@ $width: 320px;
 
 /*---------- LANDING ----------*/
 .landing-container{
+  position: relative;
 }
 
 .landing {
@@ -41,6 +42,10 @@ $width: 320px;
   font-size: 2.5vh
 }
 
+.landing img {
+  height: 100%;
+  width: 100%;
+}
 
 /*---------- GENERAL ----------*/
 * {
@@ -64,6 +69,7 @@ header {
     width: 100%;
     height: 60px;
     top: 0px;
+    z-index: 2000;
 }
 
 header li a {
@@ -107,6 +113,10 @@ td {
 
 .txt-center {
   text-align: center;
+}
+
+.txt-right {
+  text-align: right;
 }
 
 .div-center {
@@ -247,6 +257,11 @@ select {
 .img-about-us {
   max-width: 100%;
   height: auto;
+}
+
+.img-features {
+  width: 10rem;
+  height: 10rem;
 }
 
 /*---------- TABLE ----------*/
