@@ -4115,6 +4115,10 @@ html {
   width: 100%;
 }
 
+.col-itens {
+  max-width: 300px;
+}
+
 /*---------- GENERAL ----------*/
 * {
   font-family: "Source Sans Pro", sans-serif;
@@ -4195,6 +4199,10 @@ td {
 .container-input-home {
   padding-right: 5px;
   padding-left: 5px;
+}
+
+.float-right {
+  float: right;
 }
 
 /*---------- HEADINGS ----------*/
