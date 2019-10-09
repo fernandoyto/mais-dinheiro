@@ -22,6 +22,21 @@ $width: 320px;
 .second-color{ color: $second-color-0 }
 .white-color{ color: white }
 
+.line {
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    & .col-4{
+      max-width: 100%;
+      width: 90%;
+    }
+  }
+
+}
 
 /*---------- BACKGROUND ----------*/
 .bg-grey{ background-color: $second-color-0; }
