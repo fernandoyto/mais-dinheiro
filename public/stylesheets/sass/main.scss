@@ -42,7 +42,6 @@ $width: 320px;
 }
 
 
-
 /*---------- GENERAL ----------*/
 * {
   font-family: 'Source Sans Pro', sans-serif;
@@ -67,18 +66,24 @@ header {
     top: 0px;
 }
 
-header li a{
-  font-size: 23px;
+header li a {
+  font-size: 24px;
   color: $primary-color-0;
   text-decoration: $primary-color-0;
-}
 
+  &.title {
+    font-size: 26px;
+  }
+}
 
 header li a:hover {
-    border-bottom: 2px solid $second-color-0;
-    transition: 3s;
+  border-bottom: 2px solid $second-color-0;
+  transition: 3s;
 }
 
+a:hover {
+  color: $primary-color-0;
+}
 
 ul {
     display: flex;
@@ -89,7 +94,7 @@ ul {
 }
 
 li {
-  margin: 20px;
+  margin: 15px 20px;
 }
 
 td {
@@ -288,6 +293,3 @@ button:hover {
 }
 
 /*---------- NAVBAR ----------*/
-
-
-

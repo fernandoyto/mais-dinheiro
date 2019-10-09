@@ -49,12 +49,16 @@ async function getAllExpenses(userId) {
   return [{ sum: 0 }];
 }
 
-async function getBalanceArray(userId) {
-  const daysArray = [];
-  const valueArray = [];
+async function getExpenseArray(userId) {
+  const expenseDaysArray = [];
+  const expenseValueArray = [];
   let sumOfDay; let x; let y;
-  const totalBalanceInCurrentMonthArray = [];
-  const recentIncomes = await Income.aggregate([
+  const totalExpenseInCurrentMonthArray = [];
+  const currentDate = new Date();
+  const totalDaysInCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+  const totalDaysInCurrentMonthArray = [];
+
+  const recentExpensesCurrentMonth = await Income.aggregate([
     { $addFields: { month: { $month: '$date' } } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentDate.getMonth() } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentMonth } },
@@ -62,32 +66,43 @@ async function getBalanceArray(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } }, // como colocar o mes sem ser chumbado????
   ]);
 
-  recentIncomes.forEach((income, index) => {
-    daysArray.push(new Date(recentIncomes[index].date).getDate());
-    valueArray.push(recentIncomes[index].value);
+  // console.log('recent',recentIncomesCurrentMonth)
+
+  recentExpensesCurrentMonth.forEach((income, index) => {
+    expenseDaysArray.push(JSON.stringify(new Date(recentExpensesCurrentMonth[index].date)).split('T')[0].substring(9,11));
+    expenseValueArray.push(recentExpensesCurrentMonth[index].value);
   });
 
-  const arrayDelete = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
-  for (let i = 0; i < arrayDelete.length; i++) {
+  function calculateDaysInCurrentMonthArray() {
+    let count = 1;
+    for (let i = 0; i < totalDaysInCurrentMonth; i++) {
+      totalDaysInCurrentMonthArray.push(count);
+      count++;
+    }
+    return totalDaysInCurrentMonthArray;
+  }
+
+  calculateDaysInCurrentMonthArray();
+  
+  for (let i = 0; i < totalDaysInCurrentMonthArray.length; i++) {
     x = i;
     sumOfDay = 0;
-    for (let j = 0; j < daysArray.length; j++) {
+    for (let j = 0; j < expenseDaysArray.length; j++) {
       y = j;
-      if (arrayDelete[x] === daysArray[y]) {
-        sumOfDay += valueArray[j];
+      if (totalDaysInCurrentMonthArray[x] === Number(expenseDaysArray[y])) {
+        sumOfDay += expenseValueArray[j];
       }
-      if (y === daysArray.length - 1 && sumOfDay !== 0) {
-        totalBalanceInCurrentMonthArray.push(sumOfDay);
+      if (y === expenseDaysArray.length - 1 && sumOfDay !== 0) {
+        totalExpenseInCurrentMonthArray.push(sumOfDay);
       }
-      if (y === daysArray.length - 1 && sumOfDay == 0) {
-        totalBalanceInCurrentMonthArray.push(0);
+      if (y === expenseDaysArray.length - 1 && sumOfDay == 0) {
+        totalExpenseInCurrentMonthArray.push(0);
       }
     }
   }
 
-  // console.log('back',totalBalanceInCurrentMonthArray)
-  return totalBalanceInCurrentMonthArray;
+  return totalExpenseInCurrentMonthArray;
 }
 
 module.exports = {
@@ -95,5 +110,5 @@ module.exports = {
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
-  getBalanceArray,
+  getExpenseArray,
 };
