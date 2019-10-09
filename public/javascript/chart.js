@@ -33,7 +33,6 @@ function teste (obj) {
   });
 }
 teste(chartValue);
-console.log(oi);
 calculateDaysInCurrentMonthArray();
 
 // ---------------------------------- START THE LOGIC TO CREATE THE CHART -----------------

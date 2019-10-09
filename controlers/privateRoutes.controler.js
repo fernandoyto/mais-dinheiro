@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Income = require('../models/Incomes');
 const Expense = require('../models/Expenses');
+const request = require('request');
 
 const {
   formatDate,
@@ -90,10 +91,28 @@ async function getBalanceArray(userId) {
   return totalBalanceInCurrentMonthArray;
 }
 
+
+async function getCurrencyData(){
+  request('https://economia.awesomeapi.com.br/all/USD-BRL,EUR-BRL,BTC-chamar', function (error, response, body) {
+      const dolarValueHigh = JSON.parse(body).USD.high;
+      const dolarValueLow = JSON.parse(body).USD.low;
+      const euroValueHigh = JSON.parse(body).EUR.high;
+      const euroValueLow = JSON.parse(body).EUR.low;
+      const BTCValueHigh = JSON.parse(body).BTC.high;
+      const BTCValueLow = JSON.parse(body).BTC.low;
+      const data = { 
+        dolarValueHigh: dolarValueHigh, 
+        dolarValueLow: dolarValueLow
+      };
+      return data;
+  });
+}
+
 module.exports = {
   getRecentIncomes,
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
   getBalanceArray,
+  getCurrencyData
 };
