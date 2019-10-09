@@ -4066,6 +4066,23 @@ html {
   color: white;
 }
 
+.line {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 1000px) {
+  .line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .line .col-4 {
+    max-width: 100%;
+    width: 90%;
+  }
+}
+
 /*---------- BACKGROUND ----------*/
 .bg-grey {
   background-color: #8c887e;
