@@ -6,8 +6,13 @@ const {
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
-  getExpenseArray
+  getExpenseArray,
+  getCurrencyData
 } = require('../../controlers/privateRoutes.controler');
+
+// const {
+//   getCurrencyData
+// } = require('../../API/requestAPI');
 
 const {
   formatMoney,
@@ -26,6 +31,8 @@ router.get('/home', async (req, res) => {
   const allIncomes = await getAllIncomes(user._id);
   const allExpenses = await getAllExpenses(user._id);
   const balanceArray = await getExpenseArray(user._id);
+  const currencyData = await getCurrencyData();
+  console.log('currency',currencyData)
   res.render('private/home', {
     user,
     recentIncomes,
@@ -34,6 +41,7 @@ router.get('/home', async (req, res) => {
     totalExpense: allExpenses[0].sum,
     balance: formatMoney( allIncomes[0].sum - allExpenses[0].sum),
     balanceArray,
+    currencyData
   });
 });
 
