@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
-var balanceArrayToChart; // COULDNT IMPORT balanceArrayToChart TOFIX
 
 const {
   getRecentIncomes,
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
-  getBalanceArray,
+  getExpenseArray,
   getCurrencyData
 } = require('../../controlers/privateRoutes.controler');
 
@@ -31,7 +30,7 @@ router.get('/home', async (req, res) => {
   const recentExpenses = await getRecentExpenses(user._id);
   const allIncomes = await getAllIncomes(user._id);
   const allExpenses = await getAllExpenses(user._id);
-  const balanceArray = await getBalanceArray(user._id);
+  const balanceArray = await getExpenseArray(user._id);
   const currencyData = await getCurrencyData();
   console.log('currency',currencyData)
   res.render('private/home', {

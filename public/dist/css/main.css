@@ -4114,14 +4114,21 @@ header {
 }
 
 header li a {
-  font-size: 23px;
+  font-size: 24px;
   color: #ffaa00;
   text-decoration: #ffaa00;
+}
+header li a.title {
+  font-size: 26px;
 }
 
 header li a:hover {
   border-bottom: 2px solid #8c887e;
   transition: 3s;
+}
+
+a:hover {
+  color: #ffaa00;
 }
 
 ul {
@@ -4133,7 +4140,7 @@ ul {
 }
 
 li {
-  margin: 20px;
+  margin: 15px 20px;
 }
 
 td {
