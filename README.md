@@ -1,7 +1,5 @@
-# mais-dinheiro
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
-
 # Moneyful
+![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
 ## Introduction
 After the second module of Ironhack Bootcamp, we learned how to make a complete Web application. Our app is about Money Management, in a simplified way.
@@ -21,4 +19,4 @@ We would like to thank all our family, colleagues and teachers that helped us ac
 
 ## Author & Version Control
 
-* **Adriana Saty Bertelli and Fernando Yto** - *Moneyful Version 1* - **Published in Oct-10th of 2019**
+* **[Adriana Saty Bertelli](https://github.com/AdrianaSaty) and [Fernando Yto](https://github.com/fernandoyto)** - *Moneyful Version 1* - **Published in Oct-10th of 2019**
