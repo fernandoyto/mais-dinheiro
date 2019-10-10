@@ -7,6 +7,12 @@
                 <h2 class="mt-5">
                     Create new Income
                 </h2>
+
+
+<button id="incomes-modal-btn">Open Modal</button>
+<button id="expenses-modal-btn">Open Modal</button>
+
+
                 <form action="/api/incomes/create" method="POST" id="income-form">
                     <div class="group">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
@@ -164,6 +170,69 @@
         {{currencyData.dolarValueHigh}}
 
 
+ {{!----------------------------------------------- INCOME MODAL -----------------------------------------------}}
+        <div id="incomes-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+                <div class="div-center">
+                    <table id="recent-incomes-table">
+                        <thead class="container">
+                            <div class="row m-0">
+                            <tr class="col-12">
+                                <div class="">
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Value</th>
+                                </div>
+                            </tr>
+                            </div>
+                        </thead>
+                        <tbody id="recent-incomes-table-body">
+                            {{#each recentIncomes}}
+                                <tr>
+                                    <td class="txt-center">{{category}}</td>
+                                    <td>{{formattedDate}}</td>
+                                    <td>${{formattedValue}}</td>            
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+ {{!----------------------------------------------- EXPENSE MODAL -----------------------------------------------}}
+        <div id="expenses-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Some text in the Modal..</p>
+                <div class="div-center">
+                    <table id="recent-expenses-table">
+                        <thead class="container">
+                            <div class="row m-0">
+                            <tr class="col-12">
+                                <div class="">
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Value</th>
+                                </div>
+                            </tr>
+                            </div>
+                        </thead>
+                        <tbody id="recent-expenses-table-body">
+                            {{#each recentExpenses}}
+                                <tr>
+                                    <td class="txt-center">{{category}}</td>
+                                    <td>{{formattedDate}}</td>
+                                    <td>${{formattedValue}}</td>            
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
@@ -172,3 +241,5 @@
     let chartValue = "{{balanceArray}}"
 </script>
 <script src="/javascript/chart.js"></script>
+<script src="/javascript/modal.js"></script>
+
