@@ -67,13 +67,10 @@ async function getExpenseArray(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } }, // como colocar o mes sem ser chumbado????
   ]);
 
-  // console.log('recent',recentIncomesCurrentMonth)
-
   recentExpensesCurrentMonth.forEach((income, index) => {
     expenseDaysArray.push(JSON.stringify(new Date(recentExpensesCurrentMonth[index].date)).split('T')[0].substring(9,11));
     expenseValueArray.push(recentExpensesCurrentMonth[index].value);
   });
-
 
   function calculateDaysInCurrentMonthArray() {
     let count = 1;
