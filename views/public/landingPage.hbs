@@ -12,11 +12,11 @@
     </div>
     <div id="features" class="container">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-12 text-center landing-titles">
                 <h2 class="mb-3">Features</h2>
             </div>
         </div>
-        <div>
+        <div class="landing-text">
             <div data-aos="fade-right" data-aos-duration="1000" class="d-flex">
                 <div class="col-8 mb-4 mb-lg-4">
                     <div class="d-block">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-lg">
                                 <h3>Manage your incomes</h3>
-                                <p class="col-itens">
+                                <p>
                                     An easy way to register and categorize your hard-earned money.
                                     A visual breakdown of when and how you get your paychecks.
                                 </p>
@@ -39,9 +39,9 @@
                 <div class="align-self-end col-8 mb-4 mb-lg-4">
                     <div class="d-block">
                         <div class="row">
-                            <div class="col-lg txt-right ">
+                            <div class="col-lg txt-right">
                                 <h3>Expense control</h3>
-                                <p class="col-itens txt-right float-right">
+                                <p class="txt-right float-right">
                                    Our charts will help you see where you can cut costs and improve your financial situation.
                                     Save money for your next big adventure.
                                 </p>
@@ -72,13 +72,15 @@
             </div>
         </div>
     </div>
-    <div id="about-us">
-        <h2>About us</h2>
-        <div class="row align-items-center justify-content-around">
-            <div class="card">
+    <div class="txt-center" id="about-us">
+        <div class="landing-titles txt-center">
+            <h2>About us</h2>
+        </div>
+        <div class="row align-items-center justify-content-around landing-text">
+            <div data-aos="fade-up" data-aos-duration="1250" data-aos-easing="ease-in" class="card">
                 <img class="img-about-us" src="/img/Adriana.jpg" alt="about-us-img">
                 <div class="card-body">
-                    <h5 class="card-title txt-center">Adriana Saty Bertelli</h5>
+                    <h4 class="card-title txt-center">Adriana Saty Bertelli</h4>
                     <p class="card-text txt-center">
                         After I got my graduation in Electrical Engineering at UFPR, 
                         I was not satisfied due to not explore my logic and creativity.
@@ -86,20 +88,32 @@
                     </p>
                 </div>
             </div>
-            <div class="card">
+            <div data-aos="fade-up" data-aos-duration="1250" data-aos-easing="ease-in" class="card">
                 <img class="img-about-us" src="/img/Fernando.jpg" alt="about-us-img">
                 <div class="card-body">
-                    <h5 class="card-title txt-center">Fernando Yto</h5>
+                    <h4 class="card-title txt-center">Fernando Yto</h4>
                     <p class="card-text txt-center">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        I like baseball and snowboard. Currently not practicing any of it, but definitely should.
+                        Studied Business Administration, but work experiences always pushed me towards the dev world.
+                        So here I am!
                     </p>
                 </div>
                 
             </div>
         </div>
     </div>
-    <div id="about-project">
-        <h2>About this project</h2>
-        <p>Morbi at feugiat lectus. Sed sit amet quam sit amet leo consequat porta ac in elit. Proin elementum urna massa, eu pulvinar nisi aliquam eget. Phasellus eu sapien gravida lectus pellentesque efficitur. Fusce bibendum, ipsum eu posuere mattis, risus metus ultricies tellus, sit amet lobortis metus tellus a dolor. Etiam aliquam urna nec laoreet volutpat. Praesent dolor ex, rhoncus in urna sit amet, dignissim hendrerit lectus. Nulla nisl justo, fringilla eget orci nec, egestas finibus risus. Aliquam at mauris vel metus imperdiet posuere nec nec nulla. Fusce lacinia non nunc et laoreet. Proin sodales quis sem sit amet fringilla. Proin id augue non est pharetra dictum ac a nibh. Pellentesque nec est et metus molestie bibendum efficitur id enim. Aliquam accumsan viverra volutpat.</p>
+    <div class="txt-center" id="about-project">
+        <div class="txt-center landing-titles">
+            <h2>About this project</h2>
+        </div>
+        <p>
+            This web application is our second project for Ironhack's Web Development Course.
+            Built using the Express framework, MongoDB as our database and Handlebars as the view engine.
+        </p>
+        <div class="d-flex row justify-content-between">
+            <div><img class="img-built-mongo" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" alt="mongodb"></div>
+            <div><img class="img-built-mongo" src="https://i0.wp.com/blog.fossasia.org/wp-content/uploads/2017/07/handlebars-js.png?w=500&ssl=1" alt="hbs"></div>            
+            <div><img class="img-built-mongo" src="https://devtechnosys.com/insights/wp-content/uploads/2019/06/express-js-logo.png" alt="express"></div>
+        </div>
     </div>
 </div>
