@@ -4066,6 +4066,10 @@ html {
   color: white;
 }
 
+.light-grey {
+  color: #6c757d;
+}
+
 .line {
   display: flex;
   justify-content: space-between;
@@ -4098,7 +4102,7 @@ html {
 }
 
 .landing {
-  height: 90vh;
+  height: 95vh;
 }
 
 .landing h1 {
@@ -4117,6 +4121,14 @@ html {
 
 .col-itens {
   max-width: 300px;
+}
+
+.landing-titles {
+  font-size: 3vh;
+}
+
+.landing-text {
+  font-size: 2vh;
 }
 
 /*---------- GENERAL ----------*/
@@ -4341,14 +4353,9 @@ select {
   height: 10rem;
 }
 
-.img-built {
-  width: 10rem;
-  height: 10rem;
-}
-
 .img-built-mongo {
-  width: 18rem;
-  height: 10rem;
+  width: 20rem;
+  height: 13rem;
 }
 
 /*---------- TABLE ----------*/
