@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
 const Income = require('../models/Incomes');
 const Expense = require('../models/Expenses');
+const request = require('request');
 
-function formatDate(date) {
-  return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
-}
+// allIncomes.forEach((allIncome, index) => {
+//   allIncomes[index].formattedDate = formatDate(new Date(allIncomes[index].date));
+//   allIncomes[index].formattedValue = formatMoney(allIncomes[index].value);
+// });
+
+const {
+  formatDate,
+  formatMoney,
+} = require('../public/javascript/helperFunctions');
 
 async function getRecentIncomes(userId) {
   const recentIncomes = await Income.find({ userId }).sort({ date: -1 }).limit(5);
@@ -23,18 +30,37 @@ async function getRecentExpenses(userId) {
 }
 
 async function getAllIncomes(userId) {
+  const allIncomes = await Income.find({ userId }).sort({ date: -1 });
+  allIncomes.forEach((income, index) => {
+    allIncomes[index].formattedDate = formatDate(new Date(allIncomes[index].date));
+    allIncomes[index].formattedValue = formatMoney(allIncomes[index].value);
+  });
+  return allIncomes;
+}
+
+async function getAllExpenses(userId) {
+  const allExpenses = await Expense.find({ userId }).sort({ date: -1 }).limit(5);
+  allExpenses.forEach((income, index) => {
+    allExpenses[index].formattedDate = formatDate(new Date(allExpenses[index].date));
+    allExpenses[index].formattedValue = formatMoney(allExpenses[index].value);
+  });
+  return allExpenses;
+}
+
+async function getSumIncomes(userId) {
   const allIncomes = await Income.aggregate([
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
   ]);
 
   if (allIncomes.length !== 0) {
+   
     return allIncomes;
   }
   return [{ sum: 0 }];
 }
 
-async function getAllExpenses(userId) {
+async function getSumExpenses(userId) {
   const allExpenses = await Expense.aggregate([
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
@@ -45,9 +71,83 @@ async function getAllExpenses(userId) {
   return [{ sum: 0 }];
 }
 
+async function getExpenseArray(userId) {
+  const expenseDaysArray = [];
+  const expenseValueArray = [];
+  let sumOfDay; let x; let y;
+  const totalExpenseInCurrentMonthArray = [];
+  const currentDate = new Date();
+  const totalDaysInCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+  const totalDaysInCurrentMonthArray = [];
+
+  const recentExpensesCurrentMonth = await Expense.aggregate([
+    { $addFields: { month: { $month: '$date' } } },
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentDate.getMonth() } },
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentMonth } },
+    // { $match: { userId: mongoose.Types.ObjectId(userId), month: '$month' } },
+    { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } }, // como colocar o mes sem ser chumbado????
+  ]);
+
+  recentExpensesCurrentMonth.forEach((expense, index) => {
+    expenseDaysArray.push(JSON.stringify(new Date(recentExpensesCurrentMonth[index].date)).split('T')[0].substring(9,11));
+    expenseValueArray.push(recentExpensesCurrentMonth[index].value);
+  });
+
+  function calculateDaysInCurrentMonthArray() {
+    let count = 1;
+    for (let i = 0; i < totalDaysInCurrentMonth; i++) {
+      totalDaysInCurrentMonthArray.push(count);
+      count++;
+    }
+    return totalDaysInCurrentMonthArray;
+  }
+
+  calculateDaysInCurrentMonthArray();
+  
+  for (let i = 0; i < totalDaysInCurrentMonthArray.length; i++) {
+    x = i;
+    sumOfDay = 0;
+    for (let j = 0; j < expenseDaysArray.length; j++) {
+      y = j;
+      if (totalDaysInCurrentMonthArray[x] === Number(expenseDaysArray[y])) {
+        sumOfDay += expenseValueArray[j];
+      }
+      if (y === expenseDaysArray.length - 1 && sumOfDay !== 0) {
+        totalExpenseInCurrentMonthArray.push(sumOfDay);
+      }
+      if (y === expenseDaysArray.length - 1 && sumOfDay == 0) {
+        totalExpenseInCurrentMonthArray.push(0);
+      }
+    }
+  }
+
+  return totalExpenseInCurrentMonthArray;
+}
+
+
+async function getCurrencyData(){
+  request('https://economia.awesomeapi.com.br/all/USD-BRL,EUR-BRL,BTC-chamar', function (error, response, body) {
+      const dolarValueHigh = JSON.parse(body).USD.high;
+      const dolarValueLow = JSON.parse(body).USD.low;
+      const euroValueHigh = JSON.parse(body).EUR.high;
+      const euroValueLow = JSON.parse(body).EUR.low;
+      const BTCValueHigh = JSON.parse(body).BTC.high;
+      const BTCValueLow = JSON.parse(body).BTC.low;
+      const data = { 
+        dolarValueHigh: dolarValueHigh, 
+        dolarValueLow: dolarValueLow
+      };
+      return data;
+  });
+}
+
 module.exports = {
   getRecentIncomes,
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
+  getSumIncomes,
+  getSumExpenses,
+  getExpenseArray,
+  getCurrencyData
 };

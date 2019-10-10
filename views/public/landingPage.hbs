@@ -1,17 +1,121 @@
 <div class="container">
     <div class="row align-items-center justify-content-center">
-        <div>
-            <h1>Money management simplified.</h1>
-            <p>Take control of your money. Manage all your expenses. Everything seamlessly in one place.</p>
+        <div class="landing d-flex align-items-center">
+            <div>
+                <h1>Money Management Simplified.</h1>
+                <p>Everything you need to take control of your money seamlessly in one place.</p>
+            </div>
+            <div>
+                <img class="primary-color" src="/img/landing.png" alt="landing">
+            </div>
         </div>
     </div>
-    <div>
-        <h2>How it works</h2>
+    <div id="features" class="container">
+        <div class="row">
+            <div class="col-12 text-center landing-titles">
+                <h2 class="mb-3">Features</h2>
+            </div>
+        </div>
+        <div class="landing-text">
+            <div data-aos="fade-right" data-aos-duration="1000" class="d-flex">
+                <div class="col-8 mb-4 mb-lg-4">
+                    <div class="d-block">
+                        <div class="row">
+                            <div class="mr-4">
+                                <img class="img-features" src="/img/income.svg" alt="income">
+                            </div>
+                            <div class="col-lg">
+                                <h3>Manage your incomes</h3>
+                                <p class="col-feature">
+                                    An easy way to register and categorize your hard-earned money.
+                                    A visual breakdown of when and how you get your paychecks.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-left" data-aos-duration="1000" class="d-flex flex-row-reverse">
+                <div class="align-self-end col-8 mb-4 mb-lg-4">
+                    <div class="d-block">
+                        <div class="row">
+                            <div class="col-lg txt-right">
+                                <h3>Expense control</h3>
+                                <p class="txt-right float-right col-feature">
+                                   Our charts will help you see where you can cut costs and improve your financial situation.
+                                    Save money for your next big adventure.
+                                </p>
+                            </div>
+                             <div class="mr-4">
+                                <img class="img-features" src="/img/expense.svg" alt="expense">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-right" data-aos-duration="1000" class="d-flex">
+                <div class="align-self-start col-8 mb-4 mb-lg-4">
+                    <div class="d-block">
+                        <div class="row">
+                            <div class="mr-4">
+                                <img class="img-features" src="/img/balance.svg" alt="balance">
+                            </div>
+                            <div class="col-feature">
+                                <h3>Visualize your monthly balance</h3>
+                                <p>
+                                    Moneyful shows you how much money you saved and how much you can spend. No more surprises at the end of the month.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <h2>About Us</h2>
+    <div class="txt-center" id="about-us">
+        <div class="landing-titles txt-center">
+            <h2>About us</h2>
+        </div>
+        <div class="row align-items-center justify-content-around landing-text">
+            <div data-aos="fade-up" data-aos-duration="1250" data-aos-easing="ease-in" class="card">
+                <img class="img-about-us" src="/img/Adriana.jpg" alt="about-us-img">
+                <div class="card-body">
+                    <h4 class="card-title txt-center">Adriana Saty Bertelli</h4>
+                    <p class="card-text txt-center">
+                        After I got my graduation in Electrical Engineering at UFPR, 
+                        I was not satisfied due to not explore my logic and creativity.
+                        So I decided to change my field to one of the most challenging areas to work on: IT!
+                    </p>
+                </div>
+            </div>
+            <div data-aos="fade-up" data-aos-duration="1250" data-aos-easing="ease-in" class="card">
+                <img class="img-about-us" src="/img/Fernando.jpg" alt="about-us-img">
+                <div class="card-body">
+                    <h4 class="card-title txt-center">Fernando Yto</h4>
+                    <p class="card-text txt-center">
+                        I like baseball and snowboard. Currently not practicing any of it, but definitely should.
+                        Studied Business Administration, but work experiences always pushed me towards the dev world.
+                        So here I am!
+                    </p>
+                </div>
+                
+            </div>
+        </div>
     </div>
-    <div>
-        Contact
+    <div class="txt-center mt-5" id="about-project">
+        <div class="txt-center landing-titles">
+            <h2>About this project</h2>
+        </div>
+        <p>
+            This web application is our second project for Ironhack's Web Development Bootcamp.
+            Built using NodeJs with Express framework, MongoDB as our database and Handlebars as the view engine.
+            We also used some NPM packages to help us. Like: bcrypt, body-parser, chart.js, gulp, sass.
+        </p>
+        <div class="d-flex row justify-content-between">
+            <div><img class="img-built-mongo" src="/img/logo-node.png" alt="express"></div>
+            <div><img class="img-built-mongo" src="/img//logo-mongoDB.png" alt="mongodb"></div>
+            <div><img class="img-built-mongo" src="/img/logo-express.png" alt="express"></div>
+            <div><img class="img-built-mongo" src="/img/logo-handlebars.png" alt="hbs"></div>            
+        </div>
     </div>
 </div>

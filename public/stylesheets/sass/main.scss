@@ -9,6 +9,11 @@
 /*------------ VARIABLES ------------*/
 $primary-color-0: #ffaa00;
 $second-color-0: #8c887e;
+// $red-color: #E8260C;
+$red-color: #d52841; 
+// $green-color: #00B35B;
+$green-color: #00a189;
+
 $muted-color: mix(white, $primary-color-0, 70%);
 $width: 320px;
 
@@ -16,12 +21,62 @@ $width: 320px;
 .primary-color{ color: $primary-color-0 }
 .second-color{ color: $second-color-0 }
 .white-color{ color: white }
+.light-grey { color: #6c757d }
 
+.line {
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    & .col-4{
+      max-width: 100%;
+      width: 90%;
+    }
+  }
+
+}
 
 /*---------- BACKGROUND ----------*/
 .bg-grey{ background-color: $second-color-0; }
 .bg-yellow{ background-color: $primary-color-0; }
 
+/*---------- LANDING ----------*/
+.landing-container{
+  position: relative;
+}
+
+.landing {
+  height: 95vh;
+}
+
+.landing h1 {
+  font-size: 6vh;
+  text-align: left;
+}
+
+.landing p {
+  font-size: 2.5vh
+}
+
+.landing img {
+  height: 100%;
+  width: 100%;
+}
+
+.col-itens {
+  max-width: 300px;;
+}
+
+.landing-titles {
+  font-size: 3vh;
+}
+
+.landing-text {
+  font-size: 2vh;
+}
 
 /*---------- GENERAL ----------*/
 * {
@@ -32,10 +87,12 @@ $width: 320px;
 :before,
 :after {
   box-sizing: border-box;
+  color: $second-color-0;
 }
 
 body {
-  margin: 80px 0 0 0;
+  font-size: 16px;
+  margin: 40px 0 0 0;
 }
 
 header {
@@ -45,18 +102,27 @@ header {
     width: 100%;
     height: 60px;
     top: 0px;
+    z-index: 2000;
 }
 
-header li a{
-    color: $primary-color-0;
-    text-decoration: none;
+header li a {
+  font-size: 1.5rem;
+  color: $primary-color-0;
+  text-decoration: $primary-color-0;
+
+  &.title {
+    font-size: 26px;
+  }
 }
 
 header li a:hover {
-    font-size: 25px;
-    transition: 0.4s;
+  border-bottom: 2px solid $second-color-0;
+  transition: 3s;
 }
 
+a:hover {
+  color: $primary-color-0;
+}
 
 ul {
     display: flex;
@@ -67,7 +133,7 @@ ul {
 }
 
 li {
-    margin: 20px;
+  margin: 15px 20px;
 }
 
 td {
@@ -100,8 +166,20 @@ td {
   text-align: center;
 }
 
+.txt-right {
+  text-align: right;
+}
+
 .div-center {
   margin: auto;
+}
+
+.float-right {
+  float: right;
+}
+
+.col-feature {
+  width: 50%;
 }
 
 /*---------- HEADINGS ----------*/
@@ -193,11 +271,102 @@ select {
 }
 
 
+.img-features {
+  width: 10rem;
+  height: 10rem;
+}
+
+.img-built-mongo {
+  width: 12rem;
+  height: 5rem;
+  filter: grayscale(80%)
+}
+
 /*---------- TABLE ----------*/
-thead {color:green;}
-tbody {color:blue;}
-tfoot {color:red;}
+thead {
+  background-color: $second-color-0;
+  color: $primary-color-0;
+
+  & th{
+    color: white;
+    font-weight: normal; 
+  }
+}
 
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid $second-color-0;
+}
+
+table {
+  width: 260px; 
+}
+
+td, tr {
+  padding: 1px 6px;
+  text-align: center;
+}
+
+/*---------- BUTTON ----------*/
+button {
+  width: 260px; 
+  background-color: $second-color-0;
+  color: white;
+  border: 2px solid $second-color-0;
+  padding: 0.2em 0;  
+  border-radius: 5px;
+  font-size: 1.1em
+  /*-- effects --*/
+  // -webkit-transition: background-color 0.3s, color 0.3s;
+	// transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+	background-color: #fff;
+  color: $second-color-0;
+  border: 2px solid $second-color-0;
+}
+
+.button:focus {
+	outline: none;
+}
+
+/*---------- MODAL ----------*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+.modal-table {
+  width: 80%
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
