@@ -4144,6 +4144,7 @@ html {
 }
 
 body {
+  font-size: 16px;
   margin: 40px 0 0 0;
 }
 
@@ -4158,7 +4159,7 @@ header {
 }
 
 header li a {
-  font-size: 24px;
+  font-size: 1.5rem;
   color: #ffaa00;
   text-decoration: #ffaa00;
 }
@@ -4354,8 +4355,9 @@ select {
 }
 
 .img-built-mongo {
-  width: 20rem;
-  height: 13rem;
+  width: 12rem;
+  height: 5rem;
+  filter: grayscale(80%);
 }
 
 /*---------- TABLE ----------*/
