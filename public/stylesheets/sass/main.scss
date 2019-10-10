@@ -166,6 +166,10 @@ td {
   float: right;
 }
 
+.col-feature {
+  width: 50%;
+}
+
 /*---------- HEADINGS ----------*/
 h1 {
   text-align: center;
@@ -326,7 +330,7 @@ table {
   width: 260px; 
 }
 
-td {
+td, tr {
   padding: 1px 6px;
   text-align: center;
 }
@@ -356,7 +360,6 @@ button:hover {
 }
 
 /*---------- MODAL ----------*/
-/* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -370,16 +373,19 @@ button:hover {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 5% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 5px;
+  width: 40%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
+.modal-table {
+  width: 80%
+}
+
 .close {
   color: #aaa;
   float: right;

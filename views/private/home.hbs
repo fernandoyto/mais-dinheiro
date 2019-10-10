@@ -7,12 +7,6 @@
                 <h2 class="mt-5">
                     Create new Income
                 </h2>
-
-
-<button id="incomes-modal-btn">Open Modal</button>
-<button id="expenses-modal-btn">Open Modal</button>
-
-
                 <form action="/api/incomes/create" method="POST" id="income-form">
                     <div class="group">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
@@ -48,7 +42,7 @@
                 </form>
             </div>
             <div>
-                <h2 class="mb-1">Recent Incomes</h2>
+                <h2 class="mt-5 mb-1">Recent Incomes</h2>
                 <div class="div-center">
                     <table id="recent-incomes-table">
                         <thead class="container">
@@ -71,6 +65,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+                <button id="incomes-modal-btn">See all Incomes</button>
             </div>
         </div>
 
@@ -138,7 +135,7 @@
                 </form>
             </div>
             <div>
-                <h2 class="mb-1">Recent Expenses</h2>
+                <h2 class="mt-5 mb-1">Recent Expenses</h2>
                 <div class="div-center">
                     <table id="recent-expenses-table">
                         <thead class="container">
@@ -164,23 +161,27 @@
                     </table>
                 </div>
             </div>
-        </div>
+            <div class="d-flex justify-content-center mt-1">
+                <button id="expenses-modal-btn">See All Expenses</button>
+            </div>
         </div>
 
-        {{currencyData.dolarValueHigh}}
+
+        {{!-- {{currencyData.dolarValueHigh}} FIXIT--}}
 
 
  {{!----------------------------------------------- INCOME MODAL -----------------------------------------------}}
         <div id="incomes-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
+                <h2 class="txt-center">All your Incomes</h2>
                 <div class="div-center">
-                    <table id="recent-incomes-table">
+                    <table id="recent-incomes-table" class="modal-table">
                         <thead class="container">
                             <div class="row m-0">
                             <tr class="col-12">
                                 <div class="">
+                                <th>Description</th>
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Value</th>
@@ -189,8 +190,9 @@
                             </div>
                         </thead>
                         <tbody id="recent-incomes-table-body">
-                            {{#each recentIncomes}}
+                            {{#each allIncomes}}
                                 <tr>
+                                    <td class="txt-center">{{description}}</td>
                                     <td class="txt-center">{{category}}</td>
                                     <td>{{formattedDate}}</td>
                                     <td>${{formattedValue}}</td>            
@@ -206,13 +208,14 @@
         <div id="expenses-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Some text in the Modal..</p>
+                <h2 class="txt-center">All your expenses</h2>
                 <div class="div-center">
-                    <table id="recent-expenses-table">
+                    <table id="recent-expenses-table" class="modal-table">
                         <thead class="container">
                             <div class="row m-0">
                             <tr class="col-12">
                                 <div class="">
+                                <th>Description</th>
                                 <th>Category</th>
                                 <th>Date</th>
                                 <th>Value</th>
@@ -221,8 +224,9 @@
                             </div>
                         </thead>
                         <tbody id="recent-expenses-table-body">
-                            {{#each recentExpenses}}
+                            {{#each allExpenses}}
                                 <tr>
+                                    <td class="txt-center">{{description}}</td>
                                     <td class="txt-center">{{category}}</td>
                                     <td>{{formattedDate}}</td>
                                     <td>${{formattedValue}}</td>            
