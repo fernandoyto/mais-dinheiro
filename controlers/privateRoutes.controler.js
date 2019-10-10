@@ -3,6 +3,11 @@ const Income = require('../models/Incomes');
 const Expense = require('../models/Expenses');
 const request = require('request');
 
+// allIncomes.forEach((allIncome, index) => {
+//   allIncomes[index].formattedDate = formatDate(new Date(allIncomes[index].date));
+//   allIncomes[index].formattedValue = formatMoney(allIncomes[index].value);
+// });
+
 const {
   formatDate,
   formatMoney,
@@ -27,18 +32,37 @@ async function getRecentExpenses(userId) {
 }
 
 async function getAllIncomes(userId) {
+  const allIncomes = await Income.find({ userId }).sort({ date: -1 });
+  allIncomes.forEach((income, index) => {
+    allIncomes[index].formattedDate = formatDate(new Date(allIncomes[index].date));
+    allIncomes[index].formattedValue = formatMoney(allIncomes[index].value);
+  });
+  return allIncomes;
+}
+
+async function getAllExpenses(userId) {
+  const allExpenses = await Expense.find({ userId }).sort({ date: -1 }).limit(5);
+  allExpenses.forEach((income, index) => {
+    allExpenses[index].formattedDate = formatDate(new Date(allExpenses[index].date));
+    allExpenses[index].formattedValue = formatMoney(allExpenses[index].value);
+  });
+  return allExpenses;
+}
+
+async function getSumIncomes(userId) {
   const allIncomes = await Income.aggregate([
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
   ]);
 
   if (allIncomes.length !== 0) {
+   
     return allIncomes;
   }
   return [{ sum: 0 }];
 }
 
-async function getAllExpenses(userId) {
+async function getSumExpenses(userId) {
   const allExpenses = await Expense.aggregate([
     { $match: { userId: mongoose.Types.ObjectId(userId) } },
     { $group: { _id: userId, sum: { $sum: '$value' } } },
@@ -59,7 +83,7 @@ async function getExpenseArray(userId) {
   const totalDaysInCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
   const totalDaysInCurrentMonthArray = [];
 
-  const recentExpensesCurrentMonth = await Income.aggregate([
+  const recentExpensesCurrentMonth = await Expense.aggregate([
     { $addFields: { month: { $month: '$date' } } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentDate.getMonth() } },
     // { $match: { userId: mongoose.Types.ObjectId(userId), month: currentMonth } },
@@ -67,7 +91,7 @@ async function getExpenseArray(userId) {
     { $match: { userId: mongoose.Types.ObjectId(userId), month: 10 } }, // como colocar o mes sem ser chumbado????
   ]);
 
-  recentExpensesCurrentMonth.forEach((income, index) => {
+  recentExpensesCurrentMonth.forEach((expense, index) => {
     expenseDaysArray.push(JSON.stringify(new Date(recentExpensesCurrentMonth[index].date)).split('T')[0].substring(9,11));
     expenseValueArray.push(recentExpensesCurrentMonth[index].value);
   });
@@ -125,6 +149,8 @@ module.exports = {
   getRecentExpenses,
   getAllIncomes,
   getAllExpenses,
+  getSumIncomes,
+  getSumExpenses,
   getExpenseArray,
   getCurrencyData
 };
