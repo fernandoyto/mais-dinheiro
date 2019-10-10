@@ -2,13 +2,13 @@
     <div class="container ">
         <div class="row line">
  {{!----------------------------------------------- INCOMES -----------------------------------------------}}
-        <div class="col-4">
+        <div class="incomes-container col-4 p-0 ">
             <div class="incomes-form ">
                 <h2 class="mt-5">
                     Create new Income
                 </h2>
                 <form action="/api/incomes/create" method="POST" id="income-form">
-                    <div class="group">
+                    <div class="group d-flex justify-content-center">
                         <input id="newIncDescription" type="string" name="description" placeholder="placeholder" required>
                         <label class="label-upside">Description</label>
                         <span class="line"></span>
@@ -26,7 +26,7 @@
                         <span class="line"></span>
                     </div>
 
-                    <div class="group mb-1">
+                    <div class="group">
                         <label class="label-upside" for="category">Category</label>
                         <select name="category" id="newIncCategory">
                             <option value="{{category}}">{{category}}</option>
@@ -35,9 +35,7 @@
                             <option value="Carry Over">Carry Over</option>
                         </select>
                         </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" id="new-income-btn">Add Income</button>
-                    </div>
+                    <button type="submit" id="new-income-btn">Add Income</button>
                     
                 </form>
             </div>
@@ -119,7 +117,7 @@
                         <span class="line"></span>
                     </div>
 
-                    <div class="group mb-1">
+                    <div class="group">
                         <label class="label-upside" for="category">Category</label>
                         <select name="category" id="newIncCategory">
                             <option value="{{category}}">{{category}}</option>
@@ -129,9 +127,7 @@
                             <option value="Entertainment">Entertainment</option>
                         </select>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" id="new-expense-btn">Add Expense</button>
-                    </div>
+                    <button type="submit" id="new-expense-btn">Add Expense</button>
                 </form>
             </div>
             <div>
@@ -148,18 +144,19 @@
                                 </div>
                             </tr>
                             </div>
-                        </thead>
-                        <tbody id="recent-expenses-table-body">
-                            {{#each recentExpenses}}
-                                <tr>
-                                    <td class="txt-center">{{category}}</td>
-                                    <td>{{formattedDate}}</td>
-                                    <td>${{formattedValue}}</td>            
-                                </tr>
-                            {{/each}}
-                        </tbody>
-                    </table>
-                </div>
+                        </tr>
+                        </div>
+                    </thead>
+                    <tbody id="recent-expenses-table-body">
+                        {{#each recentExpenses}}
+                            <tr>
+                                <td class="txt-center">{{category}}</td>
+                                <td>{{formattedDate}}</td>
+                                <td>{{value}}</td>            
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
             <div class="d-flex justify-content-center mt-1">
                 <button id="expenses-modal-btn">See All Expenses</button>

@@ -4161,15 +4161,15 @@ header {
 header li a {
   font-size: 1.5rem;
   color: #ffaa00;
-  text-decoration: #ffaa00;
+  text-decoration: none;
 }
 header li a.title {
   font-size: 26px;
 }
 
 header li a:hover {
-  border-bottom: 2px solid #8c887e;
-  transition: 3s;
+  font-size: 25px;
+  transition: 0.4s;
 }
 
 a:hover {
@@ -4196,6 +4196,31 @@ td {
   margin-right: auto;
 }
 
+.group {
+  position: relative;
+  margin: 30px 0;
+}
+.group ::-webkit-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group ::-moz-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+.group :-ms-input-placeholder {
+  color: transparent;
+  opacity: 0;
+  transition: inherit;
+}
+
 .txt-center {
   text-align: center;
 }
@@ -4205,13 +4230,7 @@ td {
 }
 
 .div-center {
-  display: flex;
-  justify-content: center;
-}
-
-.container-input-home {
-  padding-right: 5px;
-  padding-left: 5px;
+  margin: auto;
 }
 
 .float-right {
@@ -4256,7 +4275,6 @@ label {
 
 input,
 textarea {
-  width: 260px;
   display: block;
   border: none;
   border-bottom: 1px solid #8c887e;
@@ -4276,11 +4294,6 @@ textarea input[type=password] {
   letter-spacing: 0.3em;
 }
 
-input[type=date] {
-  text-align: center;
-  padding-left: 56px;
-}
-
 .label-upside {
   outline: none;
 }
@@ -4289,39 +4302,11 @@ input[type=date] {
   outline: none;
 }
 
-.group {
-  position: relative;
-  margin: 30px 0;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-.group ::-webkit-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group ::-moz-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-.group :-ms-input-placeholder {
-  color: transparent;
-  opacity: 0;
-  transition: inherit;
-}
-
 /*------ LINE UNDER INPUTS -------*/
 .effect ~ .line {
   position: absolute;
   bottom: 0;
-  left: -15px;
+  left: 0;
   width: 0;
   height: 2px;
   background-color: #ffaa00;
@@ -4329,28 +4314,14 @@ input[type=date] {
 }
 
 .effect:focus ~ .line, .has-content.effect ~ .line {
-  width: 260px;
+  width: 140px;
   transition: 0.4s;
-  margin-left: 14px;
 }
 
 /*---------- SELECT ----------*/
 select {
   border: none;
   border-bottom: 1px solid #8c887e;
-  width: 260px;
-  text-align: center;
-}
-
-/*---------- CARD ----------*/
-.card {
-  width: 30rem;
-}
-
-/*---------- IMAGE ----------*/
-.img-about-us {
-  max-width: 100%;
-  height: auto;
 }
 
 .img-features {
@@ -4387,25 +4358,12 @@ td, tr {
   text-align: center;
 }
 
-/*---------- BUTTON ----------*/
-button {
-  width: 260px;
-  background-color: #8c887e;
-  color: white;
-  border: 2px solid #8c887e;
-  padding: 0.2em 0;
-  border-radius: 5px;
-  font-size: 1.1em;
+tfoot {
+  color: red;
 }
 
-button:hover {
-  background-color: #fff;
-  color: #8c887e;
-  border: 2px solid #8c887e;
-}
-
-.button:focus {
-  outline: none;
+table, th, td {
+  border: 1px solid black;
 }
 
 /*---------- MODAL ----------*/
